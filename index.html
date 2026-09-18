@@ -31,7 +31,6 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
-      /* Background setup for random Mahadev wallpapers */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -90,7 +89,7 @@
       cursor: pointer;
     }
 
-    /* Top Navbar Header */
+    /* Header */
     header {
       width: 100%;
       max-width: 1000px;
@@ -126,7 +125,7 @@
       cursor: pointer;
     }
 
-    /* Dashboard Layout */
+    /* Dashboard Grid */
     .dashboard-grid {
       width: 100%;
       max-width: 1000px;
@@ -301,7 +300,6 @@
         <option value="mr">मराठी (Marathi)</option>
         <option value="ta">தமிழ் (Tamil)</option>
         <option value="te">తెలుగు (Telugu)</option>
-        <option value="kn">```html
         <option value="kn">ಕನ್ನಡ (Kannada)</option>
         <option value="ml">മലയാളം (Malayalam)</option>
         <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
@@ -387,4 +385,41 @@
     let lastIndex = -1;
     let currentLang = 'en';
 
-    // Curated High
+    const mahadevImages = [
+      "[https://images.unsplash.com/photo-1620052581237-5d36667be337?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1620052581237-5d36667be337?q=80&w=1920&auto=format&fit=crop)",
+      "[https://images.unsplash.com/photo-1617653202545-931490e8d7e7?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1617653202545-931490e8d7e7?q=80&w=1920&auto=format&fit=crop)",
+      "[https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1920&auto=format&fit=crop)",
+      "[https://images.unsplash.com/photo-1567157577867-05ccb1388e66?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1567157577867-05ccb1388e66?q=80&w=1920&auto=format&fit=crop)",
+      "[https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1920&auto=format&fit=crop)"
+    ];
+
+    function setRandomMahadevBackground() {
+      const randomIndex = Math.floor(Math.random() * mahadevImages.length);
+      const imageUrl = mahadevImages[randomIndex];
+      document.body.style.backgroundImage = `linear-gradient(rgba(11, 14, 20, 0.75), rgba(11, 14, 20, 0.75)), url('${imageUrl}')`;
+    }
+
+    const defaultUI = {
+      brandText: "🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA",
+      heroBadge: "Sanatan Dharma",
+      heroTitle: '"HAR HAR MAHADEV — ETERNAL STRENGTH IN DEVOTION"',
+      philHeader: "🔱 Core Philosophy",
+      philBody: "The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.",
+      quoteBadge: "Sacred Quote",
+      newQuoteBtn: "Get Another Quote",
+      copyBtn: "Copy Quote",
+      lineageHeader: "🛡️ Ancient Lineage & Duty",
+      l1Title: "• Spiritual Guardian:",
+      l1Text: "Preserving traditional Shaivite rituals and monastic order.",
+      l2Title: "• Sadhana & Meditation:",
+      l2Text: "Encouraging self-mastery, detachment, and unwavering devotion.",
+      l3Title: "• Dharma Protection:",
+      l3Text: "Standing firm as protector of Vedic knowledge and spiritual truths.",
+      footerText: "Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition"
+    };
+
+    async function translateText(text, targetLang) {
+      if (targetLang === 'en' || !text) return text;
+      try {
+        const url = `[https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=$](https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=$){targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+        const res = await fetch(url);
