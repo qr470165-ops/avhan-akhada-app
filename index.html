@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shri Shambhu Dashnam Avhan Akhada</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between font-sans">
+
+  <!-- Header -->
+  <header class="p-6 text-center border-b border-amber-800/40 bg-slate-900/50">
+    <h1 class="text-3xl md:text-4xl font-bold text-amber-500 tracking-wide">
+      Shri Shambhu Dashnam Avhan Akhada
+    </h1>
+    <p class="text-slate-400 mt-2 text-sm md:text-base">
+      Eternal Wisdom, Shaivite Philosophy & Sacred Teachings
+    </p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-4 py-8 flex-grow flex flex-col justify-center items-center">
+    
+    <!-- Philosophy Card -->
+    <section class="w-full bg-slate-900 border border-amber-700/30 rounded-xl p-6 mb-8 shadow-lg">
+      <h2 class="text-xl font-semibold text-amber-400 mb-3 border-b border-slate-800 pb-2">
+        Core Philosophy
+      </h2>
+      <p class="text-slate-300 leading-relaxed text-sm md:text-base">
+        The Shri Shambhu Dashnam Avhan Akhada stands on the ancient principles of Shaivism and Sanatan Dharma, traceably rooted in devotion to Lord Shiva and Lord Dattatreya. It upholds spiritual discipline, protection of righteousness (Dharma), and self-realization through ascetic practices and selfless devotion.
+      </p>
+    </section>
+
+    <!-- Quote Generator Section -->
+    <section class="w-full bg-slate-900/80 border border-amber-600/40 rounded-xl p-8 text-center shadow-xl">
+      <span class="text-amber-500 text-xs uppercase tracking-widest font-semibold">Sacred Quote</span>
+      <p id="quote-text" class="text-lg md:text-2xl font-serif text-slate-100 my-6 italic">
+        "Loading sacred quote..."
+      </p>
+      <p id="quote-category" class="text-amber-400/80 text-sm font-medium mb-6"></p>
+      
+      <button onclick="getNewQuote()" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold px-6 py-3 rounded-lg transition duration-200 shadow-md">
+        Get Another Quote
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="p-4 text-center text-xs text-slate-500 border-t border-slate-900">
+    <p>Dedicated to the Preservation of Dashnam Avhan Tradition</p>
+  </footer>
+
+  <!-- App Script -->
+  <script>
+    let quotesData = [];
+
+    async function loadQuotes() {
+      try {
+        const response = await fetch('quotes.json');
+        quotesData = await response.json();
+        getNewQuote();
+      } catch (error) {
+        document.getElementById('quote-text').innerText = "Har Har Mahadev — Devotion to Dharma is eternal strength.";
+        document.getElementById('quote-category').innerText = "Tradition";
+      }
+    }
+
+    function getNewQuote() {
+      if (quotesData.length === 0) return;
+      const randomIndex = Math.floor(Math.random() * quotesData.length);
+      const selected = quotesData[randomIndex];
+      document.getElementById('quote-text').innerText = `"${selected.quote}"`;
+      document.getElementById('quote-category').innerText = `— Category: ${selected.category}`;
+    }
+
+    window.onload = loadQuotes;
+  </script>
+</body>
+</html>
