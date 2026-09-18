@@ -7,7 +7,7 @@
   <style>
     :root {
       --bg-color: #0b0e14;
-      --card-bg: rgba(18, 24, 36, 0.90);
+      --card-bg: rgba(18, 24, 36, 0.92);
       --border-color: #2a3447;
       --accent-gold: #d4af37;
       --accent-orange: #e67e22;
@@ -125,7 +125,7 @@
       cursor: pointer;
     }
 
-    /* Dashboard Layout */
+    /* Dashboard Grid Layout */
     .dashboard-grid {
       width: 100%;
       max-width: 1000px;
@@ -296,7 +296,13 @@
         <option value="hi">हिन्दी (Hindi)</option>
         <option value="sa">संस्कृतम् (Sanskrit)</option>
         <option value="gu">ગુજરાતી (Gujarati)</option>
-        <option value="mr">मराठी (Marathi)</option>
+        <option value="mr">મરાઠી (Marathi)</option>
+        <option value="bn">বাংলা (Bengali)</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+        <option value="te">తెలుగు (Telugu)</option>
+        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        <option value="ml">മലയാളം (Malayalam)</option>
+        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
       </select>
       <button class="btn-primary" onclick="confirmInitialLanguage()">Continue / आगे बढ़ें</button>
     </div>
@@ -314,11 +320,17 @@
         <option value="sa">संस्कृतम् (Sanskrit)</option>
         <option value="gu">ગુજરાતી (Gujarati)</option>
         <option value="mr">मराठी (Marathi)</option>
+        <option value="bn">বাংলা (Bengali)</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+        <option value="te">తెలుగు (Telugu)</option>
+        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        <option value="ml">മലയാളം (Malayalam)</option>
+        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
       </select>
     </div>
   </header>
 
-  <!-- Dashboard Container Grid -->
+  <!-- Dashboard Grid -->
   <div class="dashboard-grid">
     
     <!-- Hero Banner Card -->
@@ -340,8 +352,8 @@
       </div>
       
       <div class="quote-content">
-        <div id="quote-text" class="quote-text">"Perform duty without expectation of reward."</div>
-        <div id="quote-category" class="quote-category">Category: Karma Yoga</div>
+        <div id="quote-text" class="quote-text">Loading quote...</div>
+        <div id="quote-category" class="quote-category"></div>
       </div>
 
       <div class="actions">
@@ -367,12 +379,11 @@
   </footer>
 
   <script>
-    // Shivji Wallpapers Array (Direct Wikimedia/Reliable URLs)
+    // Explicit Lord Shiva Wallpaper Images
     const shivaImages = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Statue_of_Lord_Shiva_at_Murudeshwar_Crop.jpg/1200px-Statue_of_Lord_Shiva_at_Murudeshwar_Crop.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Shiva_Statue_in_Rishikesh.jpg/1200px-Shiva_Statue_in_Rishikesh.jpg",
-      "https://images.unsplash.com/photo-1620052581237-5d36667be337?w=1600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1600&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1620052581237-5d36667be337?w=1600&auto=format&fit=crop"
     ];
 
     function setRandomShivaBackground() {
@@ -381,7 +392,7 @@
       document.body.style.backgroundImage = `linear-gradient(rgba(11, 14, 20, 0.8), rgba(11, 14, 20, 0.8)), url('${imgUrl}')`;
     }
 
-    // Built-in Translation Translations Dictionary
+    // Languages Translation Data
     const translations = {
       en: {
         brandText: "🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA",
@@ -399,7 +410,8 @@
         l2Text: "Encouraging self-mastery, detachment, and unwavering devotion.",
         l3Title: "• Dharma Protection:",
         l3Text: "Standing firm as protector of Vedic knowledge and spiritual truths.",
-        footerText: "Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition"
+        footerText: "Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition",
+        catPrefix: "Category"
       },
       hi: {
         brandText: "🔱 श्री शंभू पंच दशनाम आह्वान अखाड़ा",
@@ -417,7 +429,8 @@
         l2Text: "आत्म-नियंत्रण, वैराग्य और भक्ति का संदेश।",
         l3Title: "• धर्म रक्षा:",
         l3Text: "वैदिक ज्ञान और आध्यात्मिक सत्य के रक्षक के रूप में दृढ़ रहना।",
-        footerText: "श्री शंभू पंच दशनाम आह्वान परंपरा के संरक्षण को समर्पित"
+        footerText: "श्री शंभू पंच दशनाम आह्वान परंपरा के संरक्षण को समर्पित",
+        catPrefix: "श्रेणी"
       },
       sa: {
         brandText: "🔱 श्री शम्भु पञ्च दशनाम आह्वान अखाडा",
@@ -435,7 +448,8 @@
         l2Text: "आत्मनिग्रहः एकाग्रता च।",
         l3Title: "• धर्म रक्षा:",
         l3Text: "वैदिक ज्ञानस्य रक्षणम्।",
-        footerText: "श्री शम्भु परंपरायाः रक्षणाय समर्पितम्"
+        footerText: "श्री शम्भु परंपरायाः रक्षणाय समर्पितम्",
+        catPrefix: "वर्गः"
       },
       gu: {
         brandText: "🔱 શ્રી શંભુ પંચ દશનામ આહ્વાન અખાડા",
@@ -453,7 +467,8 @@
         l2Text: "આત્મ-નિયંત્રણ અને અનન્ય ભક્તિ.",
         l3Title: "• ધર્મ રક્ષણ:",
         l3Text: "વૈદિક જ્ઞાન અને આધ્યાત્મિક સત્યનું રક્ષણ.",
-        footerText: "શ્રી શંભુ પરંપરાના સંરક્ષણ માટે સમર્પિત"
+        footerText: "શ્રી શંભુ પરંપરાના સંરક્ષણ માટે સમર્પિત",
+        catPrefix: "શ્રેણી"
       },
       mr: {
         brandText: "🔱 श्री शंभू पंच दशनाम आव्हान आखाडा",
@@ -471,19 +486,51 @@
         l2Text: "आत्म-नियंत्रण आणि भक्ती.",
         l3Title: "• धर्म रक्षण:",
         l3Text: "वैदिक ज्ञानाचे रक्षण करणे.",
-        footerText: "श्री शंभू परंपरेच्या जतनासाठी समर्पित"
+        footerText: "श्री शंभू परंपरेच्या जतनासाठी समर्पित",
+        catPrefix: "श्रेणी"
       }
     };
 
+    // Fully Localized Quotes Data
     const quotesList = [
-      { quote: "Perform duty without expectation of reward.", category: "Karma Yoga" },
-      { quote: "Dharma protects those who protect it.", category: "Dharma & Truth" },
-      { quote: "Silence is the true language of self-realization.", category: "Meditation" },
-      { quote: "He who has conquered himself has conquered the universe.", category: "Inner Strength" },
-      { quote: "Devotion is not a ritual; it is the total surrender of ego.", category: "Sadhana" }
+      {
+        en: "Perform duty without expectation of reward.",
+        hi: "कर्म करो, फल की चिंता मत करो।",
+        sa: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।",
+        gu: "ફળની આશા રાખ્યા વગર કર્તવ્ય બજાવો.",
+        mr: "फळाची अपेक्षा न ठेवता कर्तव्य पार पाडा.",
+        catEn: "Karma Yoga", catHi: "कर्म योग", catSa: "कर्मयोगः", catGu: "કર્મ યોગ", catMr: "कर्मयोग"
+      },
+      {
+        en: "Dharma protects those who protect it.",
+        hi: "धर्म उनकी रक्षा करता है जो धर्म की रक्षा करते हैं।",
+        sa: "धर्मो रक्षति रक्षितः।",
+        gu: "ધર્મ તેનું રક્ષણ કરે છે જે ધર્મનું રક્ષણ કરે છે.",
+        mr: "धर्म त्याचे रक्षण करतो जो धर्माचे रक्षण करतो.",
+        catEn: "Dharma & Truth", catHi: "धर्म और सत्य", catSa: "धर्मः सत्यं च", catGu: "ધર્મ અને સત્ય", catMr: "धर्म आणि सत्य"
+      },
+      {
+        en: "Silence is the true language of self-realization.",
+        hi: "मौन ही आत्म-साक्षात्कार की सच्ची भाषा है।",
+        sa: "मौनं सर्वार्थसाधनम्।",
+        gu: "મૌન એ આત્મ-સાક્ષાત્કારની સાચી ભાષા છે.",
+        mr: "मौन ही आत्म-साक्षात्काराची खरी भाषा आहे.",
+        catEn: "Meditation", catHi: "ध्यान", catSa: "ध्यानम्", catGu: "ધ્યાન", catMr: "ध्यान"
+      }
     ];
 
     let currentLang = 'en';
+    let currentQuoteIndex = 0;
+
+    function renderQuote() {
+      const q = quotesList[currentQuoteIndex];
+      const text = q[currentLang] || q['en'];
+      const cat = q['cat' + currentLang.charAt(0).toUpperCase() + currentLang.slice(1)] || q['catEn'];
+      const prefix = (translations[currentLang] || translations['en']).catPrefix;
+
+      document.getElementById('quote-text').innerText = `"${text}"`;
+      document.getElementById('quote-category').innerText = `${prefix}: ${cat}`;
+    }
 
     function applyLanguage(lang) {
       currentLang = lang;
@@ -505,6 +552,8 @@
       document.getElementById('l3-title').innerText = data.l3Title;
       document.getElementById('l3-text').innerText = data.l3Text;
       document.getElementById('footer-text').innerText = data.footerText;
+
+      renderQuote();
     }
 
     function confirmInitialLanguage() {
@@ -521,10 +570,8 @@
     }
 
     function getNewQuote() {
-      const randomIndex = Math.floor(Math.random() * quotesList.length);
-      const q = quotesList[randomIndex];
-      document.getElementById('quote-text').innerText = `"${q.quote}"`;
-      document.getElementById('quote-category').innerText = `Category: ${q.category}`;
+      currentQuoteIndex = (currentQuoteIndex + 1) % quotesList.length;
+      renderQuote();
     }
 
     function copyQuote() {
@@ -536,7 +583,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       setRandomShivaBackground();
-      getNewQuote();
+      renderQuote();
     });
   </script>
 
