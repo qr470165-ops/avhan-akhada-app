@@ -4,156 +4,533 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shree Shambhu Panch Dashnam Avahan Akhada</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    .font-cinzel { font-family: 'Cinzel', serif; }
-    .font-poppins { font-family: 'Poppins', sans-serif; }
-    .gold-gradient {
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #92400e 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    :root {
+      --bg-color: #0b0e14;
+      --card-bg: #121824;
+      --border-color: #2a3447;
+      --accent-gold: #d4af37;
+      --accent-orange: #e67e22;
+      --text-gold: #f39c12;
+      --text-light: #e2e8f0;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: var(--bg-color);
+      color: var(--text-light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      transition: background-image 0.5s ease-in-out;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(11, 14, 20, 0.92);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-box {
+      background: var(--card-bg);
+      border: 2px solid var(--accent-gold);
+      border-radius: 12px;
+      padding: 35px 25px;
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    .modal-box h2 {
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .modal-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .modal-box select {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--bg-color);
+      color: var(--accent-gold);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      margin-bottom: 25px;
+      cursor: pointer;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(18, 24, 36, 0.88);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-gold);
+      font-weight: bold;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .lang-container select {
+      background-color: var(--card-bg);
+      color: var(--accent-gold);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: 6px;
+      outline: none;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* Dashboard Grid */
+    .dashboard-grid {
+      width: 100%;
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 20px;
+    }
+
+    .full-width-card {
+      grid-column: span 2;
+      background: rgba(18, 24, 36, 0.88);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(230, 126, 34, 0.2);
+      color: var(--accent-orange);
+      border: 1px solid var(--accent-orange);
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: 1.6rem;
+      color: #ffffff;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    .card {
+      background: rgba(18, 24, 36, 0.88);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 25px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-gold);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .card p, .card ul {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .card ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .card ul li {
+      margin-bottom: 10px;
+    }
+
+    .card ul li strong {
+      color: var(--text-light);
+    }
+
+    .quote-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .quote-content {
+      margin: 20px 0;
+    }
+
+    .quote-text {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #ffffff;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .quote-category {
+      color: var(--accent-gold);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-orange);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #d35400;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-light);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.75rem;
+      color: #cbd5e1;
+      text-align: center;
+      background: rgba(18, 24, 36, 0.88);
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      .full-width-card {
+        grid-column: span 1;
+      }
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between font-poppins selection:bg-amber-500 selection:text-slate-950">
+<body>
 
-  <!-- Full-Width Navigation / Header -->
-  <header class="w-full px-6 py-6 text-center border-b border-amber-800/30 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 flex items-center justify-center text-amber-500 drop-shadow-[0_0_12px_rgba(245,158,11,0.6)]">
-          <svg class="w-10 h-10 stroke-current" fill="none" stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M8 4v4c0 2.21 1.79 4 4 4s4-1.79 4-4V4M6 4h4M14 4h4" />
-          </svg>
-        </div>
-        <h1 class="text-xl md:text-2xl font-extrabold tracking-wider font-cinzel gold-gradient text-left">
-          Shree Shambhu Panch Dashnam Avahan Akhada
-        </h1>
-      </div>
+  <!-- Language Selection Modal -->
+  <div id="language-modal" class="modal-overlay">
+    <div class="modal-box">
+      <h2>ॐ Choose Your Language</h2>
+      <p>कृपया आगे बढ़ने के लिए अपनी भाषा चुनें / Select your preferred Indian language to proceed:</p>
+      <select id="modal-language-select">
+        <option value="en" selected>English</option>
+        <option value="hi">हिन्दी (Hindi)</option>
+        <option value="sa">संस्कृतम् (Sanskrit)</option>
+        <option value="gu">ગુજરાતી (Gujarati)</option>
+        <option value="bn">বাংলা (Bengali)</option>
+        <option value="mr">मराठी (Marathi)</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+        <option value="te">తెలుగు (Telugu)</option>
+        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        <option value="ml">മലയാളം (Malayalam)</option>
+        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+        <option value="or">ଓଡ଼ିଆ (Odia)</option>
+      </select>
+      <button class="btn-primary" onclick="confirmInitialLanguage()">Continue / आगे बढ़ें</button>
+    </div>
+  </div>
 
-      <span class="text-amber-200/70 text-xs tracking-widest uppercase font-medium border border-amber-600/30 px-3 py-1 rounded-full bg-slate-950/50">
-        Shaivite Wisdom & Ascetic Tradition
-      </span>
-
+  <!-- Header -->
+  <header>
+    <div>
+      <div class="brand" id="brand-text">🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA</div>
+    </div>
+    <div class="lang-container">
+      <select id="header-language-select" onchange="changeLanguageFromHeader()">
+        <option value="en" selected>English</option>
+        <option value="hi">हिन्दी (Hindi)</option>
+        <option value="sa">संस्कृतम् (Sanskrit)</option>
+        <option value="gu">ગુજરાતી (Gujarati)</option>
+        <option value="bn">বাংলা (Bengali)</option>
+        <option value="mr">मराठी (Marathi)</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+        <option value="te">తెలుగు (Telugu)</option>
+        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        <option value="ml">മലയാളം (Malayalam)</option>
+        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+        <option value="or">ଓଡ଼ିଆ (Odia)</option>
+      </select>
     </div>
   </header>
 
-  <!-- Main Grid Layout (Fills Left & Right Margins) -->
-  <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 flex-grow w-full">
+  <!-- Dashboard Container Grid -->
+  <div class="dashboard-grid">
     
-    <!-- Hero Banner (Wide Screen) -->
-    <div class="w-full h-60 md:h-80 rounded-2xl overflow-hidden mb-8 border border-amber-600/40 shadow-[0_10px_30px_rgba(0,0,0,0.8)] relative group">
-      <img 
-        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80" 
-        alt="Sacred Mountains" 
-        class="w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-700 ease-out"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-6 md:p-10">
-        <div>
-          <span class="text-amber-500 text-xs uppercase tracking-widest font-semibold bg-amber-950/80 border border-amber-600/50 px-3 py-1 rounded-full">Sanatan Dharma</span>
-          <p class="text-amber-300 font-cinzel text-xl md:text-3xl mt-3 drop-shadow">"Har Har Mahadev — Eternal Strength in Devotion"</p>
-        </div>
-      </div>
+    <!-- Hero Banner Card -->
+    <div class="full-width-card">
+      <div class="badge" id="hero-badge">Sanatan Dharma</div>
+      <div class="hero-title" id="hero-title">"HAR HAR MAHADEV — ETERNAL STRENGTH IN DEVOTION"</div>
     </div>
 
-    <!-- 2-Column Content Section -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Core Philosophy Card -->
+    <div class="card">
+      <div class="card-header" id="phil-header">🔱 Core Philosophy</div>
+      <p id="phil-body">The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.</p>
+    </div>
+
+    <!-- Dynamic Quote Card -->
+    <div class="card quote-card" style="grid-row: span 2;">
+      <div>
+        <div class="badge" id="quote-badge" style="background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); border-color: var(--accent-gold);">Sacred Quote</div>
+      </div>
       
-      <!-- Left Column: Core Philosophy & History -->
-      <div class="space-y-8">
-        
-        <section class="bg-slate-900/90 border border-amber-700/40 rounded-2xl p-6 md:p-8 shadow-xl backdrop-blur-sm relative overflow-hidden">
-          <h2 class="text-xl font-bold font-cinzel text-amber-400 mb-4 border-b border-amber-800/40 pb-3 flex items-center gap-2">
-            <span>🔱</span> Core Philosophy
-          </h2>
-          <p class="text-slate-300 leading-relaxed text-sm md:text-base font-light">
-            The <strong class="text-amber-400 font-medium">Shree Shambhu Panch Dashnam Avahan Akhada</strong> represents ancient traditions of Shaivism and Sanatan Dharma. Traceably rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.
-          </p>
-        </section>
-
-        <section class="bg-slate-900/90 border border-amber-700/40 rounded-2xl p-6 md:p-8 shadow-xl backdrop-blur-sm">
-          <h2 class="text-xl font-bold font-cinzel text-amber-400 mb-4 border-b border-amber-800/40 pb-3 flex items-center gap-2">
-            <span>🛡️</span> Ancient Lineage & Duty
-          </h2>
-          <ul class="text-slate-300 text-sm md:text-base space-y-3 font-light list-disc list-inside">
-            <li><strong class="text-amber-300">Spiritual Guardian:</strong> Preserving traditional Shaivite rituals and monastic order.</li>
-            <li><strong class="text-amber-300">Sadhana & Meditation:</strong> Encouraging self-mastery, detachment, and unwavering devotion.</li>
-            <li><strong class="text-amber-300">Dharma Protection:</strong> Standing firm as protector of Vedic knowledge and spiritual truths.</li>
-          </ul>
-        </section>
-
+      <div class="quote-content">
+        <div id="quote-text" class="quote-text">Loading quote...</div>
+        <div id="quote-category" class="quote-category"></div>
       </div>
 
-      <!-- Right Column: Interactive Quote Engine -->
-      <div class="flex flex-col">
-        <section class="bg-gradient-to-b from-slate-900 to-slate-950 border border-amber-500/40 rounded-2xl p-8 text-center shadow-2xl h-full flex flex-col justify-between">
-          
-          <div>
-            <div class="inline-block bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
-              Sacred Quote
-            </div>
-            
-            <p id="quote-text" class="text-xl md:text-2xl font-cinzel text-slate-100 my-6 leading-relaxed italic min-h-[120px] flex items-center justify-center">
-              "Loading sacred quote..."
-            </p>
-            
-            <p id="quote-category" class="text-amber-400/90 text-sm font-medium tracking-wide mb-8"></p>
-          </div>
-          
-          <div class="flex flex-wrap gap-4 justify-center">
-            <button onclick="getNewQuote()" class="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition duration-300 shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] transform hover:-translate-y-0.5">
-              Get Another Quote
-            </button>
-            <button onclick="copyQuote()" class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-600/40 font-semibold px-6 py-3.5 rounded-xl transition duration-300">
-              Copy Quote
-            </button>
-          </div>
-
-        </section>
+      <div class="actions">
+        <button id="new-quote-btn" class="btn-primary" onclick="getNewQuote()">Get Another Quote</button>
+        <button id="copy-btn" class="btn-secondary" onclick="copyQuote()">Copy Quote</button>
       </div>
-
     </div>
 
-  </main>
+    <!-- Ancient Lineage & Duty Card -->
+    <div class="card">
+      <div class="card-header" id="lineage-header">🛡️ Ancient Lineage & Duty</div>
+      <ul>
+        <li><strong id="l1-title">• Spiritual Guardian:</strong> <span id="l1-text">Preserving traditional Shaivite rituals and monastic order.</span></li>
+        <li><strong id="l2-title">• Sadhana & Meditation:</strong> <span id="l2-text">Encouraging self-mastery, detachment, and unwavering devotion.</span></li>
+        <li><strong id="l3-title">• Dharma Protection:</strong> <span id="l3-text">Standing firm as protector of Vedic knowledge and spiritual truths.</span></li>
+      </ul>
+    </div>
 
-  <!-- Footer -->
-  <footer class="p-6 text-center text-xs text-slate-500 border-t border-slate-900 bg-slate-950 mt-12">
-    <p>Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition</p>
+  </div>
+
+  <footer id="footer-text">
+    Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition
   </footer>
 
-  <!-- Script -->
   <script>
     let quotesData = [];
+    let lastIndex = -1;
+    let currentLang = 'en';
+
+    const mahadevImages = [
+      "[https://images.unsplash.com/photo-1620052581237-5d36667be337?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1620052581237-5d36667be337?q=80&w=1920&auto=format&fit=crop)",
+      "[https://images.unsplash.com/photo-1617653202545-931490e8d7e7?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1617653202545-931490e8d7e7?q=80&w=1920&auto=format&fit=crop)",
+      "[https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=1920&auto=format&fit=crop)",
+      "[https://images.unsplash.com/photo-1567157577867-05ccb1388e66?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1567157577867-05ccb1388e66?q=80&w=1920&auto=format&fit=crop)",
+      "[https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1920&auto=format&fit=crop](https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1920&auto=format&fit=crop)"
+    ];
+
+    function setRandomMahadevBackground() {
+      const randomIndex = Math.floor(Math.random() * mahadevImages.length);
+      const imageUrl = mahadevImages[randomIndex];
+      document.body.style.backgroundImage = `linear-gradient(rgba(11, 14, 20, 0.75), rgba(11, 14, 20, 0.75)), url('${imageUrl}')`;
+    }
+
+    const defaultUI = {
+      brandText: "🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA",
+      heroBadge: "Sanatan Dharma",
+      heroTitle: '"HAR HAR MAHADEV — ETERNAL STRENGTH IN DEVOTION"',
+      philHeader: "🔱 Core Philosophy",
+      philBody: "The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.",
+      quoteBadge: "Sacred Quote",
+      newQuoteBtn: "Get Another Quote",
+      copyBtn: "Copy Quote",
+      lineageHeader: "🛡️ Ancient Lineage & Duty",
+      l1Title: "• Spiritual Guardian:",
+      l1Text: "Preserving traditional Shaivite rituals and monastic order.",
+      l2Title: "• Sadhana & Meditation:",
+      l2Text: "Encouraging self-mastery, detachment, and unwavering devotion.",
+      l3Title: "• Dharma Protection:",
+      l3Text: "Standing firm as protector of Vedic knowledge and spiritual truths.",
+      footerText: "Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition"
+    };
+
+    async function translateText(text, targetLang) {
+      if (targetLang === 'en' || !text) return text;
+      try {
+        const url = `[https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=$](https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=$){targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        return data[0][0][0];
+      } catch (e) {
+        return text;
+      }
+    }
+
+    async function translatePageUI(targetLang) {
+      document.getElementById('brand-text').innerText = await translateText(defaultUI.brandText, targetLang);
+      document.getElementById('hero-badge').innerText = await translateText(defaultUI.heroBadge, targetLang);
+      document.getElementById('hero-title').innerText = await translateText(defaultUI.heroTitle, targetLang);
+      document.getElementById('phil-header').innerText = await translateText(defaultUI.philHeader, targetLang);
+      document.getElementById('phil-body').innerText = await translateText(defaultUI.philBody, targetLang);
+      document.getElementById('quote-badge').innerText = await translateText(defaultUI.quoteBadge, targetLang);
+      document.getElementById('new-quote-btn').innerText = await translateText(defaultUI.newQuoteBtn, targetLang);
+      document.getElementById('copy-btn').innerText = await translateText(defaultUI.copyBtn, targetLang);
+      document.getElementById('lineage-header').innerText = await translateText(defaultUI.lineageHeader, targetLang);
+      document.getElementById('l1-title').innerText = await translateText(defaultUI.l1Title, targetLang);
+      document.getElementById('l1-text').innerText = await translateText(defaultUI.l1Text, targetLang);
+      document.getElementById('l2-title').innerText = await translateText(defaultUI.l2Title, targetLang);
+      document.getElementById('l2-text').innerText = await translateText(defaultUI.l2Text, targetLang);
+      document.getElementById('l3-title').innerText = await translateText(defaultUI.l3Title, targetLang);
+      document.getElementById('l3-text').innerText = await translateText(defaultUI.l3Text, targetLang);
+      document.getElementById('footer-text').innerText = await translateText(defaultUI.footerText, targetLang);
+    }
 
     async function loadQuotes() {
       try {
         const response = await fetch('quotes.json');
         quotesData = await response.json();
-        getNewQuote();
       } catch (error) {
-        document.getElementById('quote-text').innerText = '"Har Har Mahadev — Devotion to Dharma is eternal strength."';
-        document.getElementById('quote-category').innerText = '— Category: Tradition';
+        quotesData = [{ quote: "Dharma protects those who protect it.", category: "Dharma & Truth" }];
       }
     }
 
-    function getNewQuote() {
-      if (quotesData.length === 0) return;
-      const randomIndex = Math.floor(Math.random() * quotesData.length);
+    async function getNewQuote() {
+      if (!quotesData || quotesData.length === 0) return;
+
+      const btn = document.getElementById('new-quote-btn');
+      btn.disabled = true;
+
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * quotesData.length);
+      } while (quotesData.length > 1 && randomIndex === lastIndex);
+
+      lastIndex = randomIndex;
       const selected = quotesData[randomIndex];
-      document.getElementById('quote-text').innerText = `"${selected.quote}"`;
-      document.getElementById('quote-category').innerText = `— Category: ${selected.category}`;
+
+      const transQuote = await translateText(selected.quote, currentLang);
+      const transCategory = await translateText(selected.category, currentLang);
+      const categoryLabel = await translateText("Category", currentLang);
+
+      document.getElementById('quote-text').innerText = `"${transQuote}"`;
+      document.getElementById('quote-category').innerText = `${categoryLabel}: ${transCategory}`;
+
+      btn.disabled = false;
+    }
+
+    async function confirmInitialLanguage() {
+      const selectedLang = document.getElementById('modal-language-select').value;
+      currentLang = selectedLang;
+      document.getElementById('header-language-select').value = selectedLang;
+
+      document.getElementById('language-modal').style.display = 'none';
+
+      await applyLanguageChange(selectedLang);
+    }
+
+    async function changeLanguageFromHeader() {
+      const selectedLang = document.getElementById('header-language-select').value;
+      currentLang = selectedLang;
+      await applyLanguageChange(selectedLang);
+    }
+
+    async function applyLanguageChange(targetLang) {
+      const btn = document.getElementById('new-quote-btn');
+      btn.disabled = true;
+
+      await translatePageUI(targetLang);
+
+      if (lastIndex !== -1 && quotesData[lastIndex]) {
+        const selected = quotesData[lastIndex];
+        const transQuote = await translateText(selected.quote, targetLang);
+        const transCategory = await translateText(selected.category, targetLang);
+        const categoryLabel = await translateText("Category", targetLang);
+
+        document.getElementById('quote-text').innerText = `"${transQuote}"`;
+        document.getElementById('quote-category').innerText = `${categoryLabel}: ${transCategory}`;
+      } else {
+        await getNewQuote();
+      }
+
+      btn.disabled = false;
     }
 
     function copyQuote() {
-      const quoteText = document.getElementById('quote-text').innerText;
-      const categoryText = document.getElementById('quote-category').innerText;
-      navigator.clipboard.writeText(`${quoteText} ${categoryText}`);
-      alert('Quote copied to clipboard!');
+      const quote = document.getElementById('quote-text').innerText;
+      const category = document.getElementById('quote-category').innerText;
+      navigator.clipboard.writeText(`${quote} - ${category}`);
+      alert("Quote copied to clipboard!");
     }
 
-    window.onload = loadQuotes;
+    document.addEventListener("DOMContentLoaded", () => {
+      setRandomMahadevBackground();
+      loadQuotes();
+    });
   </script>
+
 </body>
 </html>
