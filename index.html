@@ -33,7 +33,6 @@
       padding: 20px;
     }
 
-    /* Top Navbar */
     header {
       width: 100%;
       max-width: 1000px;
@@ -55,13 +54,6 @@
       letter-spacing: 1px;
     }
 
-    .subtitle {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
     .lang-container select {
       background-color: var(--card-bg);
       color: var(--accent-gold);
@@ -73,7 +65,6 @@
       cursor: pointer;
     }
 
-    /* Main Container Grid */
     .dashboard-grid {
       width: 100%;
       max-width: 1000px;
@@ -151,7 +142,6 @@
       color: var(--text-light);
     }
 
-    /* Quote Area */
     .quote-card {
       display: flex;
       flex-direction: column;
@@ -217,6 +207,7 @@
       margin-top: 30px;
       font-size: 0.75rem;
       color: var(--text-muted);
+      text-align: center;
     }
 
     @media (max-width: 768px) {
@@ -234,7 +225,7 @@
   <!-- Top Header Navigation -->
   <header>
     <div>
-      <div class="brand">🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA</div>
+      <div class="brand" id="brand-text">🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA</div>
     </div>
     <div class="lang-container">
       <select id="language-select" onchange="changeLanguage()">
@@ -259,20 +250,20 @@
     
     <!-- Hero Banner Card -->
     <div class="full-width-card">
-      <div class="badge">Sanatan Dharma</div>
-      <div class="hero-title">"HAR HAR MAHADEV — ETERNAL STRENGTH IN DEVOTION"</div>
+      <div class="badge" id="hero-badge">Sanatan Dharma</div>
+      <div class="hero-title" id="hero-title">"HAR HAR MAHADEV — ETERNAL STRENGTH IN DEVOTION"</div>
     </div>
 
     <!-- Core Philosophy Card -->
     <div class="card">
-      <div class="card-header">🔱 Core Philosophy</div>
-      <p>The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.</p>
+      <div class="card-header" id="phil-header">🔱 Core Philosophy</div>
+      <p id="phil-body">The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.</p>
     </div>
 
     <!-- Interactive Dynamic Quote Card -->
     <div class="card quote-card" style="grid-row: span 2;">
       <div>
-        <div class="badge" style="background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); border-color: var(--accent-gold);">Sacred Quote</div>
+        <div class="badge" id="quote-badge" style="background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); border-color: var(--accent-gold);">Sacred Quote</div>
       </div>
       
       <div class="quote-content">
@@ -282,23 +273,23 @@
 
       <div class="actions">
         <button id="new-quote-btn" class="btn-primary" onclick="getNewQuote()">Get Another Quote</button>
-        <button class="btn-secondary" onclick="copyQuote()">Copy Quote</button>
+        <button id="copy-btn" class="btn-secondary" onclick="copyQuote()">Copy Quote</button>
       </div>
     </div>
 
     <!-- Ancient Lineage & Duty Card -->
     <div class="card">
-      <div class="card-header">🛡️ Ancient Lineage & Duty</div>
+      <div class="card-header" id="lineage-header">🛡️ Ancient Lineage & Duty</div>
       <ul>
-        <li><strong>• Spiritual Guardian:</strong> Preserving traditional Shaivite rituals and monastic order.</li>
-        <li><strong>• Sadhana & Meditation:</strong> Encouraging self-mastery, detachment, and unwavering devotion.</li>
-        <li><strong>• Dharma Protection:</strong> Standing firm as protector of Vedic knowledge and spiritual truths.</li>
+        <li><strong id="l1-title">• Spiritual Guardian:</strong> <span id="l1-text">Preserving traditional Shaivite rituals and monastic order.</span></li>
+        <li><strong id="l2-title">• Sadhana & Meditation:</strong> <span id="l2-text">Encouraging self-mastery, detachment, and unwavering devotion.</span></li>
+        <li><strong id="l3-title">• Dharma Protection:</strong> <span id="l3-text">Standing firm as protector of Vedic knowledge and spiritual truths.</span></li>
       </ul>
     </div>
 
   </div>
 
-  <footer>
+  <footer id="footer-text">
     Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition
   </footer>
 
@@ -307,9 +298,29 @@
     let lastIndex = -1;
     let currentLang = 'en';
 
+    // Original static texts for UI translation
+    const defaultUI = {
+      brandText: "🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA",
+      heroBadge: "Sanatan Dharma",
+      heroTitle: '"HAR HAR MAHADEV — ETERNAL STRENGTH IN DEVOTION"',
+      philHeader: "🔱 Core Philosophy",
+      philBody: "The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.",
+      quoteBadge: "Sacred Quote",
+      newQuoteBtn: "Get Another Quote",
+      copyBtn: "Copy Quote",
+      lineageHeader: "🛡️ Ancient Lineage & Duty",
+      l1Title: "• Spiritual Guardian:",
+      l1Text: "Preserving traditional Shaivite rituals and monastic order.",
+      l2Title: "• Sadhana & Meditation:",
+      l2Text: "Encouraging self-mastery, detachment, and unwavering devotion.",
+      l3Title: "• Dharma Protection:",
+      l3Text: "Standing firm as protector of Vedic knowledge and spiritual truths.",
+      footerText: "Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition"
+    };
+
     // Dynamic Translation Helper
     async function translateText(text, targetLang) {
-      if (targetLang === 'en') return text;
+      if (targetLang === 'en' || !text) return text;
       try {
         const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
         const res = await fetch(url);
@@ -318,6 +329,26 @@
       } catch (e) {
         return text;
       }
+    }
+
+    // Translate full UI layout
+    async function translatePageUI(targetLang) {
+      document.getElementById('brand-text').innerText = await translateText(defaultUI.brandText, targetLang);
+      document.getElementById('hero-badge').innerText = await translateText(defaultUI.heroBadge, targetLang);
+      document.getElementById('hero-title').innerText = await translateText(defaultUI.heroTitle, targetLang);
+      document.getElementById('phil-header').innerText = await translateText(defaultUI.philHeader, targetLang);
+      document.getElementById('phil-body').innerText = await translateText(defaultUI.philBody, targetLang);
+      document.getElementById('quote-badge').innerText = await translateText(defaultUI.quoteBadge, targetLang);
+      document.getElementById('new-quote-btn').innerText = await translateText(defaultUI.newQuoteBtn, targetLang);
+      document.getElementById('copy-btn').innerText = await translateText(defaultUI.copyBtn, targetLang);
+      document.getElementById('lineage-header').innerText = await translateText(defaultUI.lineageHeader, targetLang);
+      document.getElementById('l1-title').innerText = await translateText(defaultUI.l1Title, targetLang);
+      document.getElementById('l1-text').innerText = await translateText(defaultUI.l1Text, targetLang);
+      document.getElementById('l2-title').innerText = await translateText(defaultUI.l2Title, targetLang);
+      document.getElementById('l2-text').innerText = await translateText(defaultUI.l2Text, targetLang);
+      document.getElementById('l3-title').innerText = await translateText(defaultUI.l3Title, targetLang);
+      document.getElementById('l3-text').innerText = await translateText(defaultUI.l3Text, targetLang);
+      document.getElementById('footer-text').innerText = await translateText(defaultUI.footerText, targetLang);
     }
 
     // Load 500 Quotes from quotes.json
@@ -349,27 +380,33 @@
 
       const transQuote = await translateText(selected.quote, currentLang);
       const transCategory = await translateText(selected.category, currentLang);
+      const categoryLabel = await translateText("Category", currentLang);
 
       document.getElementById('quote-text').innerText = `"${transQuote}"`;
-      document.getElementById('quote-category').innerText = `Category: ${transCategory}`;
+      document.getElementById('quote-category').innerText = `${categoryLabel}: ${transCategory}`;
 
       btn.disabled = false;
     }
 
-    // Language Change Event
+    // Language Change Event (Translates UI and Quote)
     async function changeLanguage() {
       currentLang = document.getElementById('language-select').value;
+      const btn = document.getElementById('new-quote-btn');
+      btn.disabled = true;
+
+      await translatePageUI(currentLang);
+
       if (lastIndex !== -1 && quotesData[lastIndex]) {
-        const btn = document.getElementById('new-quote-btn');
-        btn.disabled = true;
         const selected = quotesData[lastIndex];
         const transQuote = await translateText(selected.quote, currentLang);
         const transCategory = await translateText(selected.category, currentLang);
+        const categoryLabel = await translateText("Category", currentLang);
 
         document.getElementById('quote-text').innerText = `"${transQuote}"`;
-        document.getElementById('quote-category').innerText = `Category: ${transCategory}`;
-        btn.disabled = false;
+        document.getElementById('quote-category').innerText = `${categoryLabel}: ${transCategory}`;
       }
+
+      btn.disabled = false;
     }
 
     // Copy Quote Function
