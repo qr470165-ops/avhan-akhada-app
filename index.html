@@ -38,7 +38,6 @@
       transition: background-image 0.5s ease-in-out;
     }
 
-    /* Modal Overlay */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -89,7 +88,6 @@
       cursor: pointer;
     }
 
-    /* Header */
     header {
       width: 100%;
       max-width: 1000px;
@@ -125,7 +123,6 @@
       cursor: pointer;
     }
 
-    /* Dashboard Grid Layout */
     .dashboard-grid {
       width: 100%;
       max-width: 1000px;
@@ -296,7 +293,7 @@
         <option value="hi">हिन्दी (Hindi)</option>
         <option value="sa">संस्कृतम् (Sanskrit)</option>
         <option value="gu">ગુજરાતી (Gujarati)</option>
-        <option value="mr">મરાઠી (Marathi)</option>
+        <option value="mr">मराठी (Marathi)</option>
         <option value="bn">বাংলা (Bengali)</option>
         <option value="ta">தமிழ் (Tamil)</option>
         <option value="te">తెలుగు (Telugu)</option>
@@ -332,20 +329,16 @@
 
   <!-- Dashboard Grid -->
   <div class="dashboard-grid">
-    
-    <!-- Hero Banner Card -->
     <div class="full-width-card">
       <div class="badge" id="hero-badge">Sanatan Dharma</div>
       <div class="hero-title" id="hero-title">"HAR HAR MAHADEV — ETERNAL STRENGTH IN DEVOTION"</div>
     </div>
 
-    <!-- Core Philosophy Card -->
     <div class="card">
       <div class="card-header" id="phil-header">🔱 Core Philosophy</div>
       <p id="phil-body">The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.</p>
     </div>
 
-    <!-- Dynamic Quote Card -->
     <div class="card quote-card" style="grid-row: span 2;">
       <div>
         <div class="badge" id="quote-badge" style="background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); border-color: var(--accent-gold);">Sacred Quote</div>
@@ -362,7 +355,6 @@
       </div>
     </div>
 
-    <!-- Ancient Lineage & Duty Card -->
     <div class="card">
       <div class="card-header" id="lineage-header">🛡️ Ancient Lineage & Duty</div>
       <ul>
@@ -371,7 +363,6 @@
         <li><strong id="l3-title">• Dharma Protection:</strong> <span id="l3-text">Standing firm as protector of Vedic knowledge and spiritual truths.</span></li>
       </ul>
     </div>
-
   </div>
 
   <footer id="footer-text">
@@ -379,7 +370,6 @@
   </footer>
 
   <script>
-    // Explicit Lord Shiva Wallpaper Images
     const shivaImages = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Statue_of_Lord_Shiva_at_Murudeshwar_Crop.jpg/1200px-Statue_of_Lord_Shiva_at_Murudeshwar_Crop.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Shiva_Statue_in_Rishikesh.jpg/1200px-Shiva_Statue_in_Rishikesh.jpg",
@@ -392,7 +382,6 @@
       document.body.style.backgroundImage = `linear-gradient(rgba(11, 14, 20, 0.8), rgba(11, 14, 20, 0.8)), url('${imgUrl}')`;
     }
 
-    // Languages Translation Data
     const translations = {
       en: {
         brandText: "🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA",
@@ -457,7 +446,7 @@
         heroTitle: '"હર હર મહાદેવ — ભક્તિમાં જ અનંત શક્તિ"',
         philHeader: "🔱 મૂળ દર્શન",
         philBody: "શ્રી શંભુ પંચ દશનામ આહ્વાન અખાડા શૈવ પરંપરાનું પ્રતિનિધિત્વ કરે છે. ભગવાન શિવ અને દત્તાત્રેય પ્રત્યેની ભક્તિ, સાધના અને આત્મસાક્ષાત્કાર પર ભાર મૂકે છે.",
-        quoteBadge: "પવિત્ર ਵਿਚાર",
+        quoteBadge: "પવિત્ર વિચાર",
         newQuoteBtn: "બીજો વિચાર જુઓ",
         copyBtn: "કોપી કરો",
         lineageHeader: "🛡️ પ્રાચીન પરંપરા અને કર્તવ્ય",
@@ -488,10 +477,123 @@
         l3Text: "वैदिक ज्ञानाचे रक्षण करणे.",
         footerText: "श्री शंभू परंपरेच्या जतनासाठी समर्पित",
         catPrefix: "श्रेणी"
+      },
+      bn: {
+        brandText: "🔱 শ্রী শম্ভু পঞ্চ দশনাম আহ্বান আখড়া",
+        heroBadge: "সনাতন ধর্ম",
+        heroTitle: '"হর হর মহাদেব — ভক্তিতেই অনন্ত শক্তি"',
+        philHeader: "🔱 মূল দর্শন",
+        philBody: "শ্রী শম্ভু পঞ্চ দশনাম আহ্বান আখড়া শৈব ঐতিহ্য ও সনাতন ধর্মের প্রতিনিধিত্ব করে। ভগবান শিব এবং ভগবান দত্তাত্রেয়ের প্রতি পরম ভক্তি, সাধনা ও ধর্মের ওপর জোর দেয়।",
+        quoteBadge: "পবিত্র বাণী",
+        newQuoteBtn: "অন্য বাণী দেখুন",
+        copyBtn: "কপি করুন",
+        lineageHeader: "🛡️ প্রাচীন ঐতিহ্য ও কর্তব্য",
+        l1Title: "• আধ্যাত্মিক রক্ষক:",
+        l1Text: "ঐতিহ্যবাহী শৈব আচার ও সন্ন্যাসী আদেশ সংরক্ষণ।",
+        l2Title: "• সাধনা ও ধ্যান:",
+        l2Text: "আত্ম-নিয়ন্ত্রণ এবং একাগ্র ভক্তি।",
+        l3Title: "• ধর্ম রক্ষা:",
+        l3Text: "বৈদিক জ্ঞান ও আধ্যাত্মিক সত্য রক্ষা।",
+        footerText: "শ্রী শম্ভু ঐতিহ্য সংরক্ষণে উৎসর্গীকৃত",
+        catPrefix: "বিভাগ"
+      },
+      ta: {
+        brandText: "🔱 ஸ்ரீ શம்பூ பஞ்ச தஷநாம் ஆவாஹன் அகாடா",
+        heroBadge: "சநாதன தர்மம்",
+        heroTitle: '"ஹர ஹர மஹாதேவ் — பத்தியில் அனந்த சக்தி"',
+        philHeader: "🔱 மூல தத்துவம்",
+        philBody: "ஸ்ரீ சம்பு பஞ்ச தசநாம் ஆவாஹன் அகாடா சைவ பாரம்பரியம் மற்றும் சநாதன தர்மத்தை பிரதிநிதித்துவப்படுத்துகிறது. சிவபெருமான் மற்றும் தத்தாத்ரேயர் பக்தி, சாதனை, தர்மத்தை வலியுறுத்துகிறது.",
+        quoteBadge: "புனித வாக்கு",
+        newQuoteBtn: "மற்றொரு வாக்கு",
+        copyBtn: "நகலெடு",
+        lineageHeader: "🛡️ பாரம்பரிய கடமை",
+        l1Title: "• ஆன்மீக பாதுகாவலர்:",
+        l1Text: "சைவ சடங்குகளை பாதுகாத்தல்.",
+        l2Title: "• சாதனை & தியானம்:",
+        l2Text: "சுய கட்டுப்பாடு மற்றும் பக்தி.",
+        l3Title: "• தர்ம பாதுகாப்பு:",
+        l3Text: "வேத அறிவை பாதுகாத்தல்.",
+        footerText: "ஸ்ரீ சம்பு பாரம்பரிய பாதுகாப்பிற்கு அர்ப்பணிக்கப்பட்டது",
+        catPrefix: "பிரிவு"
+      },
+      te: {
+        brandText: "🔱 శ్రీ శంభూ పంచ దశనామ్ ఆవాహన్ అఖాడా",
+        heroBadge: "సనాతన ధర్మం",
+        heroTitle: '"హర హర మహాదేవ్ — భక్తిలోనే అనంత శక్తి"',
+        philHeader: "🔱 మూల తత్త్వం",
+        philBody: "శ్రీ శంభూ పంచ దశనామ్ ఆవాహన్ అఖాడా శైవ సంప్రదాయం మరియు సనాతన ధర్మానికి ప్రతీక. శివుడు మరియు దత్తాత్రేయుని పట్ల భక్తి, సాధన మరియు ధర్మాన్ని నొక్కి చెబుతుంది.",
+        quoteBadge: "పవిత్ర వాక్కు",
+        newQuoteBtn: "మరొక ఆలోచన",
+        copyBtn: "కాపీ చేయి",
+        lineageHeader: "🛡️ ప్రాచీన సంప్రదాయం & బాధ్యత",
+        l1Title: "• ఆధ్యాత్మిక రక్షకుడు:",
+        l1Text: "సంప్రదాయ శైవ ఆచారాల పరిరక్షణ.",
+        l2Title: "• సాధన & ధ్యానం:",
+        l2Text: "ఆత్మ నియంత్రణ మరియు నిశ్చల భక్తి.",
+        l3Title: "• ధర్మ రక్షణ:",
+        l3Text: "వైదిక జ్ఞాన పరిరక్షణ.",
+        footerText: "శ్రీ శంభూ సంప్రదాయ పరిరక్షణకు అంకితం",
+        catPrefix: "వర్గం"
+      },
+      kn: {
+        brandText: "🔱 శ్రీ శంభూ పంచ దశనామ్ ఆవాహన్ అఖాడా",
+        heroBadge: "ಸನಾತನ ಧರ್ಮ",
+        heroTitle: '"ಹರ ಹರ ಮಹಾದೇವ — ಭಕ್ತಿಯಲ್ಲಿ ಅನಂತ ಶಕ್ತಿ"',
+        philHeader: "🔱 ಮೂಲ ತತ್ತ್ವ",
+        philBody: "ಶ್ರೀ ಶಂಭು ಪಂಚ ದಶನಾಮ್ ಆವಾಹನ್ ಅಖಾಡ ಶೈವ ಪರಂಪರೆ ಮತ್ತು ಸನಾತನ ಧರ್ಮವನ್ನು ಪ್ರತಿನಿಧಿಸುತ್ತದೆ. ಶಿವ ಮತ್ತು ದತ್ತಾತ್ರೇಯ ಭಕ್ತಿ, ಸಾಧನೆ ಮತ್ತು ಧರ್ಮವನ್ನು ಪ್ರಮುಖವಾಗಿಸುತ್ತದೆ.",
+        quoteBadge: "ಪವಿತ್ರ ನುಡಿ",
+        newQuoteBtn: "ಮತ್ತೊಂದು ನುಡಿ",
+        copyBtn: "ಕಾಪಿ ಮಾಡಿ",
+        lineageHeader: "🛡️ ಪ್ರಾಚೀನ ಪರಂಪರೆ ಮತ್ತು ಕರ್ತವ್ಯ",
+        l1Title: "• ಆಧ್ಯಾತ್ಮಿಕ ರಕ್ಷಕ:",
+        l1Text: "ಪಾರಂಪರಿಕ ಶೈವ ಆಚಾರಗಳ ರಕ್ಷಣೆ.",
+        l2Title: "• ಸಾಧನೆ & ಧ್ಯಾನ:",
+        l2Text: "ಆತ್ಮ ನಿಯಂತ್ರಣ ಮತ್ತು ಏಕಾಗ್ರ ಭಕ್ತಿ.",
+        l3Title: "• ಧರ್ಮ ರಕ್ಷಣೆ:",
+        l3Text: "ವೈದಿಕ ಜ್ಞಾನದ ರಕ್ಷಣೆ.",
+        footerText: "ಶ್ರೀ ಶಂಭು ಪರಂಪರೆಯ ರಕ್ಷಣೆಗೆ ಸಮರ್ಪಿತ",
+        catPrefix: "ವರ್ಗ"
+      },
+      ml: {
+        brandText: "🔱 ശ്രീ ശംഭു പഞ്ച ദശനാമ് ആവാഹൻ അഖാഡ",
+        heroBadge: "സനാതന ധർമ്മം",
+        heroTitle: '"ഹര ഹര മഹാദേവ് — ഭക്തിയിൽ അനന്ത ശക്തി"',
+        philHeader: "🔱 മൂല തത്വം",
+        philBody: "ശ്രീ ശംഭു പഞ്ച ദശനാമ് ആവാഹൻ അഖാഡ ശൈവ പാരമ്പര്യത്തെയും സനാതന ധർമ്മത്തെയും പ്രതിനിധീകരിക്കുന്നു. ശിവ ഭക്തിയും സാധനയും ധർമ്മവും ഊന്നിപ്പറയുന്നു.",
+        quoteBadge: "പവിത്ര വചനം",
+        newQuoteBtn: "മറ്റൊരു വചനം",
+        copyBtn: "കോപ്പി ചെയ്യുക",
+        lineageHeader: "🛡️ പരമ്പരാഗത കടമ",
+        l1Title: "• ആത്മീയ സംരക്ഷകൻ:",
+        l1Text: "ശൈവ ആചാരങ്ങളുടെ സംരക്ഷണം.",
+        l2Title: "• സാധന & ധ്യാനം:",
+        l2Text: "ആത്മനിയന്ത്രണവും ഭക്തിയും.",
+        l3Title: "• ധർമ്മ സംരക്ഷണം:",
+        l3Text: "വൈദിക ജ്ഞാനത്തിന്റെ സംരക്ഷണം.",
+        footerText: "ശ്രീ ശംഭു പാരമ്പര്യ സംരക്ഷണത്തിനായി സമർപ്പിതം",
+        catPrefix: "വിഭാഗം"
+      },
+      pa: {
+        brandText: "🔱 ਸ਼੍ਰੀ ਸ਼ੰਭੂ ਪੰਚ ਦਸ਼ਨਾਮ ਆਵਾਹਨ ਅਖਾੜਾ",
+        heroBadge: "ਸਨਾਤਨ ਧਰਮ",
+        heroTitle: '"ਹਰਿ ਹਰਿ ਮਹਾਦੇਵ — ਭਗਤੀ ਵਿੱਚ ਹੀ ਅਨੰਤ ਸ਼ਕਤੀ"',
+        philHeader: "🔱 ਮੂਲ ਦਰਸ਼ਨ",
+        philBody: "ਸ਼੍ਰੀ ਸ਼ੰਭੂ ਪੰਚ ਦਸ਼ਨਾਮ ਆਵਾਹਨ ਅਖਾੜਾ ਸ਼ੈਵ ਪਰੰਪਰਾ ਅਤੇ ਸਨਾਤਨ ਧਰਮ ਦਾ ਪ੍ਰਤੀਕ ਹੈ। ਭਗਵਾਨ ਸ਼ਿਵ ਅਤੇ ਦੱਤਾਤਰੇਯ ਦੀ ਭਗਤੀ, ਸਾਧਨਾ ਅਤੇ ਧਰਮ 'ਤੇ ਜ਼ੋਰ ਦਿੰਦਾ ਹੈ।",
+        quoteBadge: "ਪਵਿੱਤਰ ਵਿਚਾਰ",
+        newQuoteBtn: "ਹੋਰ ਵਿਚਾਰ ਵੇਖੋ",
+        copyBtn: "ਕਾਪੀ ਕਰੋ",
+        lineageHeader: "🛡️ ਪ੍ਰਾਚੀਨ ਪਰੰਪਰਾ ਅਤੇ ਕਰਤੱਵ",
+        l1Title: "• ਅਧਿਆਤਮਿਕ ਰੱਖਿਅਕ:",
+        l1Text: "ਸ਼ੈਵ ਰੀਤੀ-ਰਿਵਾਜਾਂ ਦਾ ਸੰਭਾਲ।",
+        l2Title: "• ਸਾਧਨਾ ਅਤੇ ਧਿਆਨ:",
+        l2Text: "ਆਤਮ-ਨਿਯੰਤਰਣ ਅਤੇ ਅਟੁੱਟ ਭਗਤੀ।",
+        l3Title: "• ਧਰਮ ਰੱਖਿਆ:",
+        l3Text: "ਵੈਦਿਕ ਗਿਆਨ ਦੀ ਰੱਖਿਆ।",
+        footerText: "ਸ਼੍ਰੀ ਸ਼ੰਭੂ ਪਰੰਪਰਾ ਦੀ ਸੰਭਾਲ ਲਈ ਸਮਰਪਿਤ",
+        catPrefix: "ਸ਼੍ਰੇਣੀ"
       }
     };
 
-    // Fully Localized Quotes Data
     const quotesList = [
       {
         en: "Perform duty without expectation of reward.",
@@ -499,7 +601,14 @@
         sa: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।",
         gu: "ફળની આશા રાખ્યા વગર કર્તવ્ય બજાવો.",
         mr: "फळाची अपेक्षा न ठेवता कर्तव्य पार पाडा.",
-        catEn: "Karma Yoga", catHi: "कर्म योग", catSa: "कर्मयोगः", catGu: "કર્મ યોગ", catMr: "कर्मयोग"
+        bn: "ফলের আশা না করে কাজ করে যাও।",
+        ta: "பலனை எதிர்பாராமல் கடமையை செய்.",
+        te: "ఫలితాన్ని ఆశించకుండా కర్తవ్యాన్ని నిర్వహించండి.",
+        kn: "ಫಲದ ಅಪೇಕ್ಷೆಯಿಲ್ಲದೆ ಕರ್ತವ್ಯ ಮಾಡಿ.",
+        ml: "ഫലം പ്രതീക്ഷിക്കാതെ കർമ്മം ചെയ്യുക.",
+        pa: "ਫਲ ਦੀ ਚਿੰਤਾ ਤੋਂ ਬਿਨਾਂ ਕਰਮ ਕਰੋ।",
+        catEn: "Karma Yoga", catHi: "कर्म योग", catSa: "कर्मयोगः", catGu: "કર્મ યોગ", catMr: "कर्मयोग",
+        catBn: "কর্ম যোগ", catTa: "கர்ம யோகம்", catTe: "కర్మ యోగం", catKn: "ಕರ್ಮ ಯೋಗ", catMl: "കർമ്മ യോഗം", catPa: "ਕਰਮ ਯੋਗ"
       },
       {
         en: "Dharma protects those who protect it.",
@@ -507,7 +616,14 @@
         sa: "धर्मो रक्षति रक्षितः।",
         gu: "ધર્મ તેનું રક્ષણ કરે છે જે ધર્મનું રક્ષણ કરે છે.",
         mr: "धर्म त्याचे रक्षण करतो जो धर्माचे रक्षण करतो.",
-        catEn: "Dharma & Truth", catHi: "धर्म और सत्य", catSa: "धर्मः सत्यं च", catGu: "ધર્મ અને સત્ય", catMr: "धर्म आणि सत्य"
+        bn: "ধর্ম তাকেই রক্ষা করে যে ধর্মকে রক্ষা করে।",
+        ta: "தர்மத்தை காப்பவனை தர்மம் காக்கும்.",
+        te: "ధర్మాన్ని రక్షించే వారిని ధర్మం రక్షిస్తుంది.",
+        kn: "ಧರ್ಮವನ್ನು ರಕ್ಷಿಸುವವರನ್ನು ಧರ್ಮ ರಕ್ಷಿಸುತ್ತದೆ.",
+        ml: "ധർമ്മത്തെ സംരക്ഷിക്കുന്നവനെ ധർമ്മം സംരക്ഷിക്കുന്നു.",
+        pa: "ਧਰਮ ਉਸਦੀ ਰੱਖਿਆ ਕਰਦਾ ਹੈ ਜੋ ਧਰਮ ਦੀ ਰੱਖਿਆ ਕਰਦਾ ਹੈ।",
+        catEn: "Dharma & Truth", catHi: "धर्म और सत्य", catSa: "धर्मः सत्यं च", catGu: "ધર્મ અને સત્ય", catMr: "धर्म आणि सत्य",
+        catBn: "ধর্ম ও সত্য", catTa: "தர்மம் & உண்மை", catTe: "ధర్మం & సత్యం", catKn: "ಧರ್ಮ ಮತ್ತು ಸತ್ಯ", catMl: "ധർമ്മവും സത്യവും", catPa: "ਧਰਮ ਅਤੇ ਸੱਚ"
       },
       {
         en: "Silence is the true language of self-realization.",
@@ -515,7 +631,14 @@
         sa: "मौनं सर्वार्थसाधनम्।",
         gu: "મૌન એ આત્મ-સાક્ષાત્કારની સાચી ભાષા છે.",
         mr: "मौन ही आत्म-साक्षात्काराची खरी भाषा आहे.",
-        catEn: "Meditation", catHi: "ध्यान", catSa: "ध्यानम्", catGu: "ધ્યાન", catMr: "ध्यान"
+        bn: "মৌনতাই আত্ম- উপলব্ধি লাভের প্রকৃত ভাষা।",
+        ta: "மௌனமே ஆத்ம தரிசனத்தின் உண்மை மொழி.",
+        te: "మౌనమే ఆత్మసాక్షాత్కారానికి నిజమైన భాష.",
+        kn: "ಮೌನವೇ ಆತ್ಮ ಸಾಕ್ಷಾತ್ಕಾರದ ನಿಜವಾದ ಭಾಷೆ.",
+        ml: "മൗനമാണ് ആത്മസാക്ഷാത്കാരത്തിന്റെ യഥാർത്ഥ ഭാഷ.",
+        pa: "ਮੌਨ ਹੀ ਆਤਮ-ਗਿਆਨ ਦੀ ਸੱਚੀ ਭਾਸ਼ਾ ਹੈ।",
+        catEn: "Meditation", catHi: "ध्यान", catSa: "ध्यानम्", catGu: "ધ્યાન", catMr: "ध्यान",
+        catBn: "ধ্যান", catTa: "தியானம்", catTe: "ధ్యానం", catKn: "ಧ್ಯಾನ", catMl: "ധ്യാനം", catPa: "ਧਿਆਨ"
       }
     ];
 
@@ -525,7 +648,8 @@
     function renderQuote() {
       const q = quotesList[currentQuoteIndex];
       const text = q[currentLang] || q['en'];
-      const cat = q['cat' + currentLang.charAt(0).toUpperCase() + currentLang.slice(1)] || q['catEn'];
+      const catKey = 'cat' + currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
+      const cat = q[catKey] || q['catEn'];
       const prefix = (translations[currentLang] || translations['en']).catPrefix;
 
       document.getElementById('quote-text').innerText = `"${text}"`;
