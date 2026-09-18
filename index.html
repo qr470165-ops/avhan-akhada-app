@@ -3,19 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avhan Akhada - Sanatan Wisdom Quotes</title>
+  <title>Avhan Akhada - Sanatan Wisdom</title>
   <style>
     :root {
       --primary-color: #d35400;
-      --bg-color: #fdfefe;
+      --secondary-color: #e67e22;
+      --accent-color: #f39c12;
+      --bg-gradient: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 50%, #ffcc80 100%);
       --card-bg: #ffffff;
-      --text-color: #2c3e50;
+      --text-main: #2c3e50;
+      --text-muted: #7f8c8d;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
       margin: 0;
       padding: 20px;
       display: flex;
@@ -26,86 +33,133 @@
 
     .container {
       background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      max-width: 600px;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(211, 84, 0, 0.2);
+      max-width: 650px;
       width: 100%;
-      padding: 30px;
+      padding: 40px 30px;
       text-align: center;
-      border-top: 5px solid var(--primary-color);
+      border: 2px solid #ffe0b2;
+      border-top: 6px solid var(--primary-color);
+      position: relative;
+    }
+
+    .om-symbol {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 5px;
     }
 
     h1 {
       color: var(--primary-color);
-      margin-top: 0;
-      font-size: 1.8rem;
+      margin: 0 0 20px 0;
+      font-size: 2rem;
+      letter-spacing: 0.5px;
     }
 
     .lang-select-container {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
     }
 
     select {
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 2px solid var(--accent-color);
+      background-color: #fff8e1;
+      color: #b71c1c;
       font-size: 1rem;
+      font-weight: 600;
       outline: none;
       cursor: pointer;
-      max-width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    select:hover, select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 8px rgba(211, 84, 0, 0.3);
     }
 
     .quote-box {
-      margin: 30px 0;
-      min-height: 120px;
+      margin: 25px 0 35px 0;
+      padding: 25px;
+      background: #fffcf5;
+      border-left: 4px solid var(--accent-color);
+      border-radius: 8px;
+      min-height: 140px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      position: relative;
+    }
+
+    .quote-mark {
+      font-size: 3rem;
+      color: #ffe0b2;
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      font-family: sans-serif;
+      line-height: 1;
     }
 
     .quote-text {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-style: italic;
       line-height: 1.6;
-      color: #34495e;
+      color: #2c3e50;
       margin-bottom: 15px;
+      z-index: 1;
     }
 
     .quote-category {
       font-weight: bold;
       color: var(--primary-color);
-      font-size: 1rem;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     button {
-      background-color: var(--primary-color);
-      color: white;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #ffffff;
       border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      border-radius: 6px;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 30px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(211, 84, 0, 0.3);
+      transition: all 0.3s ease;
     }
 
     button:hover {
-      background-color: #a04000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(211, 84, 0, 0.4);
     }
 
     button:disabled {
-      background-color: #bdc3c7;
+      background: #bdc3c7;
+      box-shadow: none;
       cursor: not-allowed;
+      transform: none;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Sanatan Wisdom & Quotes</h1>
+    <div class="om-symbol">ॐ</div>
+    <h1>सनातन ज्ञान व सुविचार</h1>
 
-    <!-- Language Selector -->
+    <!-- Language Selector: Exclusively Indian Languages + English -->
     <div class="lang-select-container">
-      <label for="language-select">Select Language: </label>
+      <label for="language-select">भाषा चुनें / Select Language: </label>
       <select id="language-select" onchange="changeLanguage()">
         <option value="en" selected>English</option>
         <option value="hi">हिन्दी (Hindi)</option>
@@ -119,17 +173,12 @@
         <option value="ml">മലയാളം (Malayalam)</option>
         <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
         <option value="or">ଓଡ଼ିଆ (Odia)</option>
-        <option value="es">Español (Spanish)</option>
-        <option value="fr">Français (French)</option>
-        <option value="de">Deutsch (German)</option>
-        <option value="ja">日本語 (Japanese)</option>
-        <option value="zh-CN">中文 (Chinese)</option>
-        <option value="ru">Русский (Russian)</option>
       </select>
     </div>
 
-    <!-- Quote Container -->
+    <!-- Quote Box -->
     <div class="quote-box">
+      <span class="quote-mark">“</span>
       <div id="quote-text" class="quote-text">Loading quote...</div>
       <div id="quote-category" class="quote-category"></div>
     </div>
@@ -168,7 +217,7 @@
       }
     }
 
-    // Select a Random Quote from the 500 dataset
+    // Select a Random Quote from dataset
     async function getNewQuote() {
       if (!quotesData || quotesData.length === 0) return;
 
@@ -176,7 +225,6 @@
       btn.disabled = true;
 
       let randomIndex;
-      // Ensure the same quote does not repeat twice in a row
       do {
         randomIndex = Math.floor(Math.random() * quotesData.length);
       } while (quotesData.length > 1 && randomIndex === lastIndex);
@@ -184,7 +232,6 @@
       lastIndex = randomIndex;
       const selected = quotesData[randomIndex];
 
-      // Translate and display in UI
       const transQuote = await translateText(selected.quote, currentLang);
       const transCategory = await translateText(selected.category, currentLang);
 
