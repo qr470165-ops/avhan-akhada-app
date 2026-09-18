@@ -31,16 +31,22 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
+      /* Background setup for random Mahadev wallpapers */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      transition: background-image 0.5s ease-in-out;
     }
 
-    /* Initial Language Selector Modal Overlay */
+    /* Modal Overlay */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(11, 14, 20, 0.95);
+      background-color: rgba(11, 14, 20, 0.92);
       backdrop-filter: blur(8px);
       z-index: 9999;
       display: flex;
@@ -84,12 +90,6 @@
       cursor: pointer;
     }
 
-    .modal-box button {
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-    }
-
     /* Top Navbar Header */
     header {
       width: 100%;
@@ -97,8 +97,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 0;
-      border-bottom: 1px solid var(--border-color);
+      padding: 15px 20px;
+      background: rgba(18, 24, 36, 0.88);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
       margin-bottom: 25px;
     }
 
@@ -134,14 +137,12 @@
 
     .full-width-card {
       grid-column: span 2;
-      background: var(--card-bg);
+      background: rgba(18, 24, 36, 0.88);
+      backdrop-filter: blur(6px);
       border: 1px solid var(--border-color);
       border-radius: 10px;
       padding: 30px;
       text-align: center;
-      background-image: linear-gradient(rgba(11, 14, 20, 0.75), rgba(11, 14, 20, 0.75)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
-      background-size: cover;
-      background-position: center;
     }
 
     .badge {
@@ -165,7 +166,8 @@
     }
 
     .card {
-      background: var(--card-bg);
+      background: rgba(18, 24, 36, 0.88);
+      backdrop-filter: blur(6px);
       border: 1px solid var(--border-color);
       border-radius: 10px;
       padding: 25px;
@@ -265,8 +267,12 @@
     footer {
       margin-top: 30px;
       font-size: 0.75rem;
-      color: var(--text-muted);
+      color: #cbd5e1;
       text-align: center;
+      background: rgba(18, 24, 36, 0.88);
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
     }
 
     @media (max-width: 768px) {
@@ -281,7 +287,7 @@
 </head>
 <body>
 
-  <!-- Initial Language Selection Modal -->
+  <!-- Language Selection Modal -->
   <div id="language-modal" class="modal-overlay">
     <div class="modal-box">
       <h2>ॐ Choose Your Language</h2>
@@ -295,6 +301,7 @@
         <option value="mr">मराठी (Marathi)</option>
         <option value="ta">தமிழ் (Tamil)</option>
         <option value="te">తెలుగు (Telugu)</option>
+        <option value="kn">```html
         <option value="kn">ಕನ್ನಡ (Kannada)</option>
         <option value="ml">മലയാളം (Malayalam)</option>
         <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
@@ -380,145 +387,4 @@
     let lastIndex = -1;
     let currentLang = 'en';
 
-    const defaultUI = {
-      brandText: "🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA",
-      heroBadge: "Sanatan Dharma",
-      heroTitle: '"HAR HAR MAHADEV — ETERNAL STRENGTH IN DEVOTION"',
-      philHeader: "🔱 Core Philosophy",
-      philBody: "The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.",
-      quoteBadge: "Sacred Quote",
-      newQuoteBtn: "Get Another Quote",
-      copyBtn: "Copy Quote",
-      lineageHeader: "🛡️ Ancient Lineage & Duty",
-      l1Title: "• Spiritual Guardian:",
-      l1Text: "Preserving traditional Shaivite rituals and monastic order.",
-      l2Title: "• Sadhana & Meditation:",
-      l2Text: "Encouraging self-mastery, detachment, and unwavering devotion.",
-      l3Title: "• Dharma Protection:",
-      l3Text: "Standing firm as protector of Vedic knowledge and spiritual truths.",
-      footerText: "Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition"
-    };
-
-    // Google Translation Helper
-    async function translateText(text, targetLang) {
-      if (targetLang === 'en' || !text) return text;
-      try {
-        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
-        const res = await fetch(url);
-        const data = await res.json();
-        return data[0][0][0];
-      } catch (e) {
-        return text;
-      }
-    }
-
-    // Translate UI Elements
-    async function translatePageUI(targetLang) {
-      document.getElementById('brand-text').innerText = await translateText(defaultUI.brandText, targetLang);
-      document.getElementById('hero-badge').innerText = await translateText(defaultUI.heroBadge, targetLang);
-      document.getElementById('hero-title').innerText = await translateText(defaultUI.heroTitle, targetLang);
-      document.getElementById('phil-header').innerText = await translateText(defaultUI.philHeader, targetLang);
-      document.getElementById('phil-body').innerText = await translateText(defaultUI.philBody, targetLang);
-      document.getElementById('quote-badge').innerText = await translateText(defaultUI.quoteBadge, targetLang);
-      document.getElementById('new-quote-btn').innerText = await translateText(defaultUI.newQuoteBtn, targetLang);
-      document.getElementById('copy-btn').innerText = await translateText(defaultUI.copyBtn, targetLang);
-      document.getElementById('lineage-header').innerText = await translateText(defaultUI.lineageHeader, targetLang);
-      document.getElementById('l1-title').innerText = await translateText(defaultUI.l1Title, targetLang);
-      document.getElementById('l1-text').innerText = await translateText(defaultUI.l1Text, targetLang);
-      document.getElementById('l2-title').innerText = await translateText(defaultUI.l2Title, targetLang);
-      document.getElementById('l2-text').innerText = await translateText(defaultUI.l2Text, targetLang);
-      document.getElementById('l3-title').innerText = await translateText(defaultUI.l3Title, targetLang);
-      document.getElementById('l3-text').innerText = await translateText(defaultUI.l3Text, targetLang);
-      document.getElementById('footer-text').innerText = await translateText(defaultUI.footerText, targetLang);
-    }
-
-    // Load Quotes Data
-    async function loadQuotes() {
-      try {
-        const response = await fetch('quotes.json');
-        quotesData = await response.json();
-      } catch (error) {
-        quotesData = [{ quote: "Dharma protects those who protect it.", category: "Dharma & Truth" }];
-      }
-    }
-
-    // Pick dynamic quote
-    async function getNewQuote() {
-      if (!quotesData || quotesData.length === 0) return;
-
-      const btn = document.getElementById('new-quote-btn');
-      btn.disabled = true;
-
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * quotesData.length);
-      } while (quotesData.length > 1 && randomIndex === lastIndex);
-
-      lastIndex = randomIndex;
-      const selected = quotesData[randomIndex];
-
-      const transQuote = await translateText(selected.quote, currentLang);
-      const transCategory = await translateText(selected.category, currentLang);
-      const categoryLabel = await translateText("Category", currentLang);
-
-      document.getElementById('quote-text').innerText = `"${transQuote}"`;
-      document.getElementById('quote-category').innerText = `${categoryLabel}: ${transCategory}`;
-
-      btn.disabled = false;
-    }
-
-    // Handle initial selection modal
-    async function confirmInitialLanguage() {
-      const selectedLang = document.getElementById('modal-language-select').value;
-      currentLang = selectedLang;
-      document.getElementById('header-language-select').value = selectedLang;
-
-      // Hide Modal
-      document.getElementById('language-modal').style.display = 'none';
-
-      // Apply Translation
-      await applyLanguageChange(selectedLang);
-    }
-
-    // Header Change Event
-    async function changeLanguageFromHeader() {
-      const selectedLang = document.getElementById('header-language-select').value;
-      currentLang = selectedLang;
-      await applyLanguageChange(selectedLang);
-    }
-
-    async function applyLanguageChange(targetLang) {
-      const btn = document.getElementById('new-quote-btn');
-      btn.disabled = true;
-
-      await translatePageUI(targetLang);
-
-      if (lastIndex !== -1 && quotesData[lastIndex]) {
-        const selected = quotesData[lastIndex];
-        const transQuote = await translateText(selected.quote, targetLang);
-        const transCategory = await translateText(selected.category, targetLang);
-        const categoryLabel = await translateText("Category", targetLang);
-
-        document.getElementById('quote-text').innerText = `"${transQuote}"`;
-        document.getElementById('quote-category').innerText = `${categoryLabel}: ${transCategory}`;
-      } else {
-        await getNewQuote();
-      }
-
-      btn.disabled = false;
-    }
-
-    function copyQuote() {
-      const quote = document.getElementById('quote-text').innerText;
-      const category = document.getElementById('quote-category').innerText;
-      navigator.clipboard.writeText(`${quote} - ${category}`);
-      alert("Quote copied to clipboard!");
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      loadQuotes();
-    });
-  </script>
-
-</body>
-</html>
+    // Curated High
