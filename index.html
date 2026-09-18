@@ -18,76 +18,108 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between font-poppins selection:bg-amber-500 selection:text-slate-950">
 
-  <!-- Header Section -->
-  <header class="p-8 text-center border-b border-amber-800/30 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
-    <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center text-amber-500 drop-shadow-[0_0_12px_rgba(245,158,11,0.6)]">
-      <svg class="w-14 h-14 stroke-current" fill="none" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M8 4v4c0 2.21 1.79 4 4 4s4-1.79 4-4V4M6 4h4M14 4h4" />
-      </svg>
+  <!-- Full-Width Navigation / Header -->
+  <header class="w-full px-6 py-6 text-center border-b border-amber-800/30 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 flex items-center justify-center text-amber-500 drop-shadow-[0_0_12px_rgba(245,158,11,0.6)]">
+          <svg class="w-10 h-10 stroke-current" fill="none" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M8 4v4c0 2.21 1.79 4 4 4s4-1.79 4-4V4M6 4h4M14 4h4" />
+          </svg>
+        </div>
+        <h1 class="text-xl md:text-2xl font-extrabold tracking-wider font-cinzel gold-gradient text-left">
+          Shree Shambhu Panch Dashnam Avahan Akhada
+        </h1>
+      </div>
+
+      <span class="text-amber-200/70 text-xs tracking-widest uppercase font-medium border border-amber-600/30 px-3 py-1 rounded-full bg-slate-950/50">
+        Shaivite Wisdom & Ascetic Tradition
+      </span>
+
     </div>
-    <h1 class="text-2xl md:text-4xl font-extrabold tracking-wider font-cinzel gold-gradient drop-shadow-sm">
-      Shree Shambhu Panch Dashnam Avahan Akhada
-    </h1>
-    <p class="text-amber-200/70 mt-2 text-xs md:text-sm tracking-widest uppercase font-medium">
-      Preserving Shaivite Wisdom, Sanatan Dharma & Ascetic Traditions
-    </p>
   </header>
 
-  <!-- Main Section -->
-  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow flex flex-col justify-center items-center w-full">
+  <!-- Main Grid Layout (Fills Left & Right Margins) -->
+  <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 flex-grow w-full">
     
-    <!-- Hero Image Banner -->
-    <div class="w-full h-56 md:h-72 rounded-2xl overflow-hidden mb-10 border border-amber-600/40 shadow-[0_10px_30px_rgba(0,0,0,0.8)] relative group">
+    <!-- Hero Banner (Wide Screen) -->
+    <div class="w-full h-60 md:h-80 rounded-2xl overflow-hidden mb-8 border border-amber-600/40 shadow-[0_10px_30px_rgba(0,0,0,0.8)] relative group">
       <img 
-        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" 
+        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80" 
         alt="Sacred Mountains" 
         class="w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-700 ease-out"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-6 md:p-8">
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-6 md:p-10">
         <div>
           <span class="text-amber-500 text-xs uppercase tracking-widest font-semibold bg-amber-950/80 border border-amber-600/50 px-3 py-1 rounded-full">Sanatan Dharma</span>
-          <p class="text-amber-300 font-cinzel text-lg md:text-2xl mt-2 drop-shadow">"Har Har Mahadev — Eternal Strength in Devotion"</p>
+          <p class="text-amber-300 font-cinzel text-xl md:text-3xl mt-3 drop-shadow">"Har Har Mahadev — Eternal Strength in Devotion"</p>
         </div>
       </div>
     </div>
 
-    <!-- Core Philosophy Card -->
-    <section class="w-full bg-slate-900/90 border border-amber-700/40 rounded-2xl p-6 md:p-8 mb-10 shadow-xl backdrop-blur-sm relative overflow-hidden">
-      <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
-      <h2 class="text-xl md:text-2xl font-bold font-cinzel text-amber-400 mb-4 border-b border-amber-800/40 pb-3 flex items-center gap-2">
-        <span>🔱</span> Core Philosophy
-      </h2>
-      <p class="text-slate-300 leading-relaxed text-sm md:text-base font-light">
-        The <strong class="text-amber-400 font-medium">Shree Shambhu Panch Dashnam Avahan Akhada</strong> represents ancient traditions of Shaivism and Sanatan Dharma. Traceably rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.
-      </p>
-    </section>
+    <!-- 2-Column Content Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- Left Column: Core Philosophy & History -->
+      <div class="space-y-8">
+        
+        <section class="bg-slate-900/90 border border-amber-700/40 rounded-2xl p-6 md:p-8 shadow-xl backdrop-blur-sm relative overflow-hidden">
+          <h2 class="text-xl font-bold font-cinzel text-amber-400 mb-4 border-b border-amber-800/40 pb-3 flex items-center gap-2">
+            <span>🔱</span> Core Philosophy
+          </h2>
+          <p class="text-slate-300 leading-relaxed text-sm md:text-base font-light">
+            The <strong class="text-amber-400 font-medium">Shree Shambhu Panch Dashnam Avahan Akhada</strong> represents ancient traditions of Shaivism and Sanatan Dharma. Traceably rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.
+          </p>
+        </section>
 
-    <!-- Interactive Quotes Section -->
-    <section class="w-full bg-gradient-to-b from-slate-900 to-slate-950 border border-amber-500/40 rounded-2xl p-8 text-center shadow-2xl relative">
-      <div class="inline-block bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
-        Sacred Quote
+        <section class="bg-slate-900/90 border border-amber-700/40 rounded-2xl p-6 md:p-8 shadow-xl backdrop-blur-sm">
+          <h2 class="text-xl font-bold font-cinzel text-amber-400 mb-4 border-b border-amber-800/40 pb-3 flex items-center gap-2">
+            <span>🛡️</span> Ancient Lineage & Duty
+          </h2>
+          <ul class="text-slate-300 text-sm md:text-base space-y-3 font-light list-disc list-inside">
+            <li><strong class="text-amber-300">Spiritual Guardian:</strong> Preserving traditional Shaivite rituals and monastic order.</li>
+            <li><strong class="text-amber-300">Sadhana & Meditation:</strong> Encouraging self-mastery, detachment, and unwavering devotion.</li>
+            <li><strong class="text-amber-300">Dharma Protection:</strong> Standing firm as protector of Vedic knowledge and spiritual truths.</li>
+          </ul>
+        </section>
+
       </div>
-      
-      <p id="quote-text" class="text-lg md:text-2xl font-cinzel text-slate-100 my-6 leading-relaxed italic min-h-[80px] flex items-center justify-center">
-        "Loading sacred quote..."
-      </p>
-      
-      <p id="quote-category" class="text-amber-400/90 text-sm font-medium tracking-wide mb-8"></p>
-      
-      <div class="flex flex-wrap gap-4 justify-center">
-        <button onclick="getNewQuote()" class="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition duration-300 shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] transform hover:-translate-y-0.5">
-          Get Another Quote
-        </button>
-        <button onclick="copyQuote()" class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-600/40 font-semibold px-6 py-3.5 rounded-xl transition duration-300">
-          Copy Quote
-        </button>
+
+      <!-- Right Column: Interactive Quote Engine -->
+      <div class="flex flex-col">
+        <section class="bg-gradient-to-b from-slate-900 to-slate-950 border border-amber-500/40 rounded-2xl p-8 text-center shadow-2xl h-full flex flex-col justify-between">
+          
+          <div>
+            <div class="inline-block bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+              Sacred Quote
+            </div>
+            
+            <p id="quote-text" class="text-xl md:text-2xl font-cinzel text-slate-100 my-6 leading-relaxed italic min-h-[120px] flex items-center justify-center">
+              "Loading sacred quote..."
+            </p>
+            
+            <p id="quote-category" class="text-amber-400/90 text-sm font-medium tracking-wide mb-8"></p>
+          </div>
+          
+          <div class="flex flex-wrap gap-4 justify-center">
+            <button onclick="getNewQuote()" class="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition duration-300 shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] transform hover:-translate-y-0.5">
+              Get Another Quote
+            </button>
+            <button onclick="copyQuote()" class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-600/40 font-semibold px-6 py-3.5 rounded-xl transition duration-300">
+              Copy Quote
+            </button>
+          </div>
+
+        </section>
       </div>
-    </section>
+
+    </div>
 
   </main>
 
   <!-- Footer -->
-  <footer class="p-6 text-center text-xs text-slate-500 border-t border-slate-900 bg-slate-950">
+  <footer class="p-6 text-center text-xs text-slate-500 border-t border-slate-900 bg-slate-950 mt-12">
     <p>Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition</p>
   </footer>
 
