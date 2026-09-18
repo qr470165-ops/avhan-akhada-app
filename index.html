@@ -33,6 +33,64 @@
       padding: 20px;
     }
 
+    /* Initial Language Selector Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(11, 14, 20, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-box {
+      background: var(--card-bg);
+      border: 2px solid var(--accent-gold);
+      border-radius: 12px;
+      padding: 35px 25px;
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    .modal-box h2 {
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .modal-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .modal-box select {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--bg-color);
+      color: var(--accent-gold);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      margin-bottom: 25px;
+      cursor: pointer;
+    }
+
+    .modal-box button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+    }
+
+    /* Top Navbar Header */
     header {
       width: 100%;
       max-width: 1000px;
@@ -65,6 +123,7 @@
       cursor: pointer;
     }
 
+    /* Dashboard Layout */
     .dashboard-grid {
       width: 100%;
       max-width: 1000px;
@@ -222,13 +281,36 @@
 </head>
 <body>
 
-  <!-- Top Header Navigation -->
+  <!-- Initial Language Selection Modal -->
+  <div id="language-modal" class="modal-overlay">
+    <div class="modal-box">
+      <h2>ॐ Choose Your Language</h2>
+      <p>कृपया आगे बढ़ने के लिए अपनी भाषा चुनें / Select your preferred Indian language to proceed:</p>
+      <select id="modal-language-select">
+        <option value="en" selected>English</option>
+        <option value="hi">हिन्दी (Hindi)</option>
+        <option value="sa">संस्कृतम् (Sanskrit)</option>
+        <option value="gu">ગુજરાતી (Gujarati)</option>
+        <option value="bn">বাংলা (Bengali)</option>
+        <option value="mr">मराठी (Marathi)</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+        <option value="te">తెలుగు (Telugu)</option>
+        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        <option value="ml">മലയാളം (Malayalam)</option>
+        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+        <option value="or">ଓଡ଼ିଆ (Odia)</option>
+      </select>
+      <button class="btn-primary" onclick="confirmInitialLanguage()">Continue / आगे बढ़ें</button>
+    </div>
+  </div>
+
+  <!-- Header -->
   <header>
     <div>
       <div class="brand" id="brand-text">🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA</div>
     </div>
     <div class="lang-container">
-      <select id="language-select" onchange="changeLanguage()">
+      <select id="header-language-select" onchange="changeLanguageFromHeader()">
         <option value="en" selected>English</option>
         <option value="hi">हिन्दी (Hindi)</option>
         <option value="sa">संस्कृतम् (Sanskrit)</option>
@@ -260,7 +342,7 @@
       <p id="phil-body">The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.</p>
     </div>
 
-    <!-- Interactive Dynamic Quote Card -->
+    <!-- Dynamic Quote Card -->
     <div class="card quote-card" style="grid-row: span 2;">
       <div>
         <div class="badge" id="quote-badge" style="background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); border-color: var(--accent-gold);">Sacred Quote</div>
@@ -298,7 +380,6 @@
     let lastIndex = -1;
     let currentLang = 'en';
 
-    // Original static texts for UI translation
     const defaultUI = {
       brandText: "🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA",
       heroBadge: "Sanatan Dharma",
@@ -318,7 +399,7 @@
       footerText: "Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition"
     };
 
-    // Dynamic Translation Helper
+    // Google Translation Helper
     async function translateText(text, targetLang) {
       if (targetLang === 'en' || !text) return text;
       try {
@@ -331,7 +412,7 @@
       }
     }
 
-    // Translate full UI layout
+    // Translate UI Elements
     async function translatePageUI(targetLang) {
       document.getElementById('brand-text').innerText = await translateText(defaultUI.brandText, targetLang);
       document.getElementById('hero-badge').innerText = await translateText(defaultUI.heroBadge, targetLang);
@@ -351,19 +432,17 @@
       document.getElementById('footer-text').innerText = await translateText(defaultUI.footerText, targetLang);
     }
 
-    // Load 500 Quotes from quotes.json
+    // Load Quotes Data
     async function loadQuotes() {
       try {
         const response = await fetch('quotes.json');
         quotesData = await response.json();
-        getNewQuote();
       } catch (error) {
-        document.getElementById('quote-text').innerText = '"Dharma protects those who protect it."';
-        document.getElementById('quote-category').innerText = 'Category: Dharma & Truth';
+        quotesData = [{ quote: "Dharma protects those who protect it.", category: "Dharma & Truth" }];
       }
     }
 
-    // Select a Random Quote from dataset
+    // Pick dynamic quote
     async function getNewQuote() {
       if (!quotesData || quotesData.length === 0) return;
 
@@ -388,28 +467,47 @@
       btn.disabled = false;
     }
 
-    // Language Change Event (Translates UI and Quote)
-    async function changeLanguage() {
-      currentLang = document.getElementById('language-select').value;
+    // Handle initial selection modal
+    async function confirmInitialLanguage() {
+      const selectedLang = document.getElementById('modal-language-select').value;
+      currentLang = selectedLang;
+      document.getElementById('header-language-select').value = selectedLang;
+
+      // Hide Modal
+      document.getElementById('language-modal').style.display = 'none';
+
+      // Apply Translation
+      await applyLanguageChange(selectedLang);
+    }
+
+    // Header Change Event
+    async function changeLanguageFromHeader() {
+      const selectedLang = document.getElementById('header-language-select').value;
+      currentLang = selectedLang;
+      await applyLanguageChange(selectedLang);
+    }
+
+    async function applyLanguageChange(targetLang) {
       const btn = document.getElementById('new-quote-btn');
       btn.disabled = true;
 
-      await translatePageUI(currentLang);
+      await translatePageUI(targetLang);
 
       if (lastIndex !== -1 && quotesData[lastIndex]) {
         const selected = quotesData[lastIndex];
-        const transQuote = await translateText(selected.quote, currentLang);
-        const transCategory = await translateText(selected.category, currentLang);
-        const categoryLabel = await translateText("Category", currentLang);
+        const transQuote = await translateText(selected.quote, targetLang);
+        const transCategory = await translateText(selected.category, targetLang);
+        const categoryLabel = await translateText("Category", targetLang);
 
         document.getElementById('quote-text').innerText = `"${transQuote}"`;
         document.getElementById('quote-category').innerText = `${categoryLabel}: ${transCategory}`;
+      } else {
+        await getNewQuote();
       }
 
       btn.disabled = false;
     }
 
-    // Copy Quote Function
     function copyQuote() {
       const quote = document.getElementById('quote-text').innerText;
       const category = document.getElementById('quote-category').innerText;
@@ -417,7 +515,6 @@
       alert("Quote copied to clipboard!");
     }
 
-    // Initialize on Page Load
     document.addEventListener("DOMContentLoaded", () => {
       loadQuotes();
     });
