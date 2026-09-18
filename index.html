@@ -6,8 +6,8 @@
   <title>Shree Shambhu Panch Dashnam Avahan Akhada</title>
   <style>
     :root {
-      --bg-color: #080a0f;
-      --card-bg: rgba(18, 24, 36, 0.92);
+      --bg-color: #0b0e14;
+      --card-bg: rgba(18, 24, 36, 0.90);
       --border-color: #2a3447;
       --accent-gold: #d4af37;
       --accent-orange: #e67e22;
@@ -31,20 +31,11 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* Mahadev Background Art Canvas */
-    #bg-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      opacity: 0.35;
-      object-fit: cover;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      transition: background-image 0.5s ease-in-out;
     }
 
     /* Modal Overlay */
@@ -54,8 +45,8 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(5, 7, 12, 0.95);
-      backdrop-filter: blur(10px);
+      background-color: rgba(5, 7, 12, 0.92);
+      backdrop-filter: blur(8px);
       z-index: 9999;
       display: flex;
       justify-content: center;
@@ -295,26 +286,17 @@
 </head>
 <body>
 
-  <!-- Dynamic Shivji Graphic Background Canvas -->
-  <canvas id="bg-canvas"></canvas>
-
   <!-- Language Selection Modal -->
   <div id="language-modal" class="modal-overlay">
     <div class="modal-box">
       <h2>ॐ Choose Your Language</h2>
-      <p>कृपया आगे बढ़ने के लिए अपनी भाषा चुनें / Select your language to proceed:</p>
+      <p>कृपया भाषा चुनें / Select your language:</p>
       <select id="modal-language-select">
         <option value="en" selected>English</option>
         <option value="hi">हिन्दी (Hindi)</option>
         <option value="sa">संस्कृतम् (Sanskrit)</option>
         <option value="gu">ગુજરાતી (Gujarati)</option>
         <option value="mr">मराठी (Marathi)</option>
-        <option value="bn">বাংলা (Bengali)</option>
-        <option value="ta">தமிழ் (Tamil)</option>
-        <option value="te">తెలుగు (Telugu)</option>
-        <option value="kn">ಕನ್ನಡ (Kannada)</option>
-        <option value="ml">മലയാളം (Malayalam)</option>
-        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
       </select>
       <button class="btn-primary" onclick="confirmInitialLanguage()">Continue / आगे बढ़ें</button>
     </div>
@@ -332,12 +314,6 @@
         <option value="sa">संस्कृतम् (Sanskrit)</option>
         <option value="gu">ગુજરાતી (Gujarati)</option>
         <option value="mr">मराठी (Marathi)</option>
-        <option value="bn">বাংলা (Bengali)</option>
-        <option value="ta">தமிழ் (Tamil)</option>
-        <option value="te">తెలుగు (Telugu)</option>
-        <option value="kn">ಕನ್ನಡ (Kannada)</option>
-        <option value="ml">മലയാളം (Malayalam)</option>
-        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
       </select>
     </div>
   </header>
@@ -391,7 +367,114 @@
   </footer>
 
   <script>
-    // Embedded Quotes for reliable display
+    // Shivji Wallpapers Array (Direct Wikimedia/Reliable URLs)
+    const shivaImages = [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Statue_of_Lord_Shiva_at_Murudeshwar_Crop.jpg/1200px-Statue_of_Lord_Shiva_at_Murudeshwar_Crop.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Shiva_Statue_in_Rishikesh.jpg/1200px-Shiva_Statue_in_Rishikesh.jpg",
+      "https://images.unsplash.com/photo-1620052581237-5d36667be337?w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1600&auto=format&fit=crop"
+    ];
+
+    function setRandomShivaBackground() {
+      const randomIndex = Math.floor(Math.random() * shivaImages.length);
+      const imgUrl = shivaImages[randomIndex];
+      document.body.style.backgroundImage = `linear-gradient(rgba(11, 14, 20, 0.8), rgba(11, 14, 20, 0.8)), url('${imgUrl}')`;
+    }
+
+    // Built-in Translation Translations Dictionary
+    const translations = {
+      en: {
+        brandText: "🔱 SHREE SHAMBHU PANCH DASHNAM AVAHAN AKHADA",
+        heroBadge: "Sanatan Dharma",
+        heroTitle: '"HAR HAR MAHADEV — ETERNAL STRENGTH IN DEVOTION"',
+        philHeader: "🔱 Core Philosophy",
+        philBody: "The Shree Shambhu Panch Dashnam Avahan Akhada represents ancient traditions of Shaivism and Sanatan Dharma. Rooted in ultimate devotion to Lord Shiva and Lord Dattatreya, it emphasizes intense spiritual discipline (Sadhana), righteousness (Dharma), and self-realization through inner strength and selfless service.",
+        quoteBadge: "Sacred Quote",
+        newQuoteBtn: "Get Another Quote",
+        copyBtn: "Copy Quote",
+        lineageHeader: "🛡️ Ancient Lineage & Duty",
+        l1Title: "• Spiritual Guardian:",
+        l1Text: "Preserving traditional Shaivite rituals and monastic order.",
+        l2Title: "• Sadhana & Meditation:",
+        l2Text: "Encouraging self-mastery, detachment, and unwavering devotion.",
+        l3Title: "• Dharma Protection:",
+        l3Text: "Standing firm as protector of Vedic knowledge and spiritual truths.",
+        footerText: "Dedicated to the Preservation of Shree Shambhu Panch Dashnam Avahan Tradition"
+      },
+      hi: {
+        brandText: "🔱 श्री शंभू पंच दशनाम आह्वान अखाड़ा",
+        heroBadge: "सनातन धर्म",
+        heroTitle: '"हर हर महादेव — भक्ति में ही अनंत शक्ति है"',
+        philHeader: "🔱 मूल दर्शन",
+        philBody: "श्री शंभू पंच दशनाम आह्वान अखाड़ा शैव परंपरा और सनातन धर्म का प्रतीक है। भगवान शिव और भगवान दत्तात्रेय के प्रति पूर्ण भक्ति में निहित, यह साधना, धर्म और आत्म-साक्षात्कार पर जोर देता है।",
+        quoteBadge: "पवित्र विचार",
+        newQuoteBtn: "दूसरा विचार देखें",
+        copyBtn: "कॉपी करें",
+        lineageHeader: "🛡️ प्राचीन परंपरा एवं कर्तव्य",
+        l1Title: "• आध्यात्मिक संरक्षक:",
+        l1Text: "पारंपरिक शैव अनुष्ठानों और संन्यासी परंपरा का संरक्षण।",
+        l2Title: "• साधना और ध्यान:",
+        l2Text: "आत्म-नियंत्रण, वैराग्य और भक्ति का संदेश।",
+        l3Title: "• धर्म रक्षा:",
+        l3Text: "वैदिक ज्ञान और आध्यात्मिक सत्य के रक्षक के रूप में दृढ़ रहना।",
+        footerText: "श्री शंभू पंच दशनाम आह्वान परंपरा के संरक्षण को समर्पित"
+      },
+      sa: {
+        brandText: "🔱 श्री शम्भु पञ्च दशनाम आह्वान अखाडा",
+        heroBadge: "सनातन धर्मः",
+        heroTitle: '"हर हर महादेव — भक्तौ नित्यं बलम्"',
+        philHeader: "🔱 मूल दर्शनम्",
+        philBody: "श्री शम्भु पञ्च दशनाम आह्वान अखाडा सनातन धर्मस्य प्रतीकम् अस्ति। शिव-दत्तात्रेययोः भक्तौ साधना धर्मः च प्राधान्यं भजते।",
+        quoteBadge: "दिव्य विचारः",
+        newQuoteBtn: "अन्य विचारः",
+        copyBtn: "प्रतिकृतिं करोतु",
+        lineageHeader: "🛡️ प्राचीन परम्परा कर्तव्यं च",
+        l1Title: "• आध्यात्मिक संरक्षकः:",
+        l1Text: "पारंपरिक शैव अनुष्ठानानां रक्षणम्।",
+        l2Title: "• साधना ध्यानं च:",
+        l2Text: "आत्मनिग्रहः एकाग्रता च।",
+        l3Title: "• धर्म रक्षा:",
+        l3Text: "वैदिक ज्ञानस्य रक्षणम्।",
+        footerText: "श्री शम्भु परंपरायाः रक्षणाय समर्पितम्"
+      },
+      gu: {
+        brandText: "🔱 શ્રી શંભુ પંચ દશનામ આહ્વાન અખાડા",
+        heroBadge: "સનાતન ધર્મ",
+        heroTitle: '"હર હર મહાદેવ — ભક્તિમાં જ અનંત શક્તિ"',
+        philHeader: "🔱 મૂળ દર્શન",
+        philBody: "શ્રી શંભુ પંચ દશનામ આહ્વાન અખાડા શૈવ પરંપરાનું પ્રતિનિધિત્વ કરે છે. ભગવાન શિવ અને દત્તાત્રેય પ્રત્યેની ભક્તિ, સાધના અને આત્મસાક્ષાત્કાર પર ભાર મૂકે છે.",
+        quoteBadge: "પવિત્ર ਵਿਚાર",
+        newQuoteBtn: "બીજો વિચાર જુઓ",
+        copyBtn: "કોપી કરો",
+        lineageHeader: "🛡️ પ્રાચીન પરંપરા અને કર્તવ્ય",
+        l1Title: "• આધ્યાત્મિક સંરક્ષક:",
+        l1Text: "પરંપરાગત શૈવ વિધિઓનું જતન.",
+        l2Title: "• સાધના અને ધ્યાન:",
+        l2Text: "આત્મ-નિયંત્રણ અને અનન્ય ભક્તિ.",
+        l3Title: "• ધર્મ રક્ષણ:",
+        l3Text: "વૈદિક જ્ઞાન અને આધ્યાત્મિક સત્યનું રક્ષણ.",
+        footerText: "શ્રી શંભુ પરંપરાના સંરક્ષણ માટે સમર્પિત"
+      },
+      mr: {
+        brandText: "🔱 श्री शंभू पंच दशनाम आव्हान आखाडा",
+        heroBadge: "सनातन धर्म",
+        heroTitle: '"हर हर महादेव — भक्तीतच अनंत शक्ती"',
+        philHeader: "🔱 मूल तत्त्वज्ञान",
+        philBody: "श्री शंभू पंच दशनाम आव्हान आखाडा शैव परंपरा आणि सनातन धर्माचे प्रतिनिधित्व करतो. भगवान शिव आणि दत्तात्रेय यांच्या भक्तीत साधना आणि धर्मावर भर दिला जातो.",
+        quoteBadge: "पवित्र विचार",
+        newQuoteBtn: "दुसरा विचार",
+        copyBtn: "कॉपी करा",
+        lineageHeader: "🛡️ प्राचीन परंपरा आणि कर्तव्य",
+        l1Title: "• आध्यात्मिक संरक्षक:",
+        l1Text: "पारंपरिक शैव विधींचे जतन.",
+        l2Title: "• साधना आणि ध्यान:",
+        l2Text: "आत्म-नियंत्रण आणि भक्ती.",
+        l3Title: "• धर्म रक्षण:",
+        l3Text: "वैदिक ज्ञानाचे रक्षण करणे.",
+        footerText: "श्री शंभू परंपरेच्या जतनासाठी समर्पित"
+      }
+    };
+
     const quotesList = [
       { quote: "Perform duty without expectation of reward.", category: "Karma Yoga" },
       { quote: "Dharma protects those who protect it.", category: "Dharma & Truth" },
@@ -400,71 +483,45 @@
       { quote: "Devotion is not a ritual; it is the total surrender of ego.", category: "Sadhana" }
     ];
 
-    let lastIndex = -1;
+    let currentLang = 'en';
 
-    // Draw Mahadev Visual Art on Canvas (Generates Mahadev Silhouette & Trishul Artwork)
-    function drawMahadevArt() {
-      const canvas = document.getElementById('bg-canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const data = translations[lang] || translations['en'];
 
-      // Dark Spiritual Gradient
-      const grad = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, canvas.width);
-      grad.addColorStop(0, '#1a233a');
-      grad.addColorStop(1, '#05070c');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Draw Trishul & Crescent Moon Symbolism in background
-      ctx.save();
-      ctx.strokeStyle = '#d4af37';
-      ctx.lineWidth = 3;
-      ctx.shadowColor = '#f39c12';
-      ctx.shadowBlur = 15;
-
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-
-      // Center Trishul Shaft
-      ctx.beginPath();
-      ctx.moveTo(centerX, centerY - 180);
-      ctx.lineTo(centerX, centerY + 220);
-      ctx.stroke();
-
-      // Outer Prongs
-      ctx.beginPath();
-      ctx.arc(centerX - 60, centerY - 100, 60, 0, Math.PI / 2, false);
-      ctx.arc(centerX + 60, centerY - 100, 60, Math.PI / 2, Math.PI, false);
-      ctx.stroke();
-
-      // Crescent Moon
-      ctx.beginPath();
-      ctx.arc(centerX + 80, centerY - 160, 40, 0.5, Math.PI * 1.3);
-      ctx.fillStyle = '#ffffff';
-      ctx.fill();
-
-      ctx.restore();
+      document.getElementById('brand-text').innerText = data.brandText;
+      document.getElementById('hero-badge').innerText = data.heroBadge;
+      document.getElementById('hero-title').innerText = data.heroTitle;
+      document.getElementById('phil-header').innerText = data.philHeader;
+      document.getElementById('phil-body').innerText = data.philBody;
+      document.getElementById('quote-badge').innerText = data.quoteBadge;
+      document.getElementById('new-quote-btn').innerText = data.newQuoteBtn;
+      document.getElementById('copy-btn').innerText = data.copyBtn;
+      document.getElementById('lineage-header').innerText = data.lineageHeader;
+      document.getElementById('l1-title').innerText = data.l1Title;
+      document.getElementById('l1-text').innerText = data.l1Text;
+      document.getElementById('l2-title').innerText = data.l2Title;
+      document.getElementById('l2-text').innerText = data.l2Text;
+      document.getElementById('l3-title').innerText = data.l3Title;
+      document.getElementById('l3-text').innerText = data.l3Text;
+      document.getElementById('footer-text').innerText = data.footerText;
     }
 
     function confirmInitialLanguage() {
-      const selectedLang = document.getElementById('modal-language-select').value;
-      document.getElementById('header-language-select').value = selectedLang;
+      const selected = document.getElementById('modal-language-select').value;
+      document.getElementById('header-language-select').value = selected;
+      applyLanguage(selected);
       document.getElementById('language-modal').style.display = 'none';
     }
 
     function changeLanguageFromHeader() {
-      const selectedLang = document.getElementById('header-language-select').value;
-      document.getElementById('modal-language-select').value = selectedLang;
+      const selected = document.getElementById('header-language-select').value;
+      document.getElementById('modal-language-select').value = selected;
+      applyLanguage(selected);
     }
 
     function getNewQuote() {
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * quotesList.length);
-      } while (quotesList.length > 1 && randomIndex === lastIndex);
-
-      lastIndex = randomIndex;
+      const randomIndex = Math.floor(Math.random() * quotesList.length);
       const q = quotesList[randomIndex];
       document.getElementById('quote-text').innerText = `"${q.quote}"`;
       document.getElementById('quote-category').innerText = `Category: ${q.category}`;
@@ -474,12 +531,11 @@
       const quote = document.getElementById('quote-text').innerText;
       const category = document.getElementById('quote-category').innerText;
       navigator.clipboard.writeText(`${quote} - ${category}`);
-      alert("Quote copied to clipboard!");
+      alert("Quote copied!");
     }
 
-    window.addEventListener('resize', drawMahadevArt);
     document.addEventListener("DOMContentLoaded", () => {
-      drawMahadevArt();
+      setRandomShivaBackground();
       getNewQuote();
     });
   </script>
