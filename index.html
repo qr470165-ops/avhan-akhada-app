@@ -654,7 +654,8 @@
     ];
 
     let currentLang = 'en';
-    let currentQuoteIndex = 0;
+    // Website open hote hi random index pick hoga
+    let currentQuoteIndex = Math.floor(Math.random() * quotesList.length);
 
     function renderQuote() {
       const q = quotesList[currentQuoteIndex];
@@ -703,8 +704,16 @@
       applyLanguage(selected);
     }
 
+    // Button click karne par naya random quote select hoga
     function getNewQuote() {
-      currentQuoteIndex = (currentQuoteIndex + 1) % quotesList.length;
+      if (quotesList.length <= 1) return;
+      
+      let newIndex;
+      do {
+        newIndex = Math.floor(Math.random() * quotesList.length);
+      } while (newIndex === currentQuoteIndex);
+
+      currentQuoteIndex = newIndex;
       renderQuote();
     }
 
